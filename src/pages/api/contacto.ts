@@ -179,6 +179,31 @@ export const POST: APIRoute = async ({ request }) => {
           headers: { 'Content-Type': 'application/json' },
         });
       }
+
+      // Enviar respuesta automática al cliente
+      // Nota: Esto fallará temporalmente si usas 'onboarding@resend.dev' porque Resend bloquea envíos a terceros
+      // en cuentas de prueba. Lo ponemos en un try-catch independiente para que no rompa el formulario del sitio.
+      try {
+        await resend.emails.send({
+          from: 'Ruvedia <onboarding@resend.dev>', // Cambiar a 'Ruvedia <hola@ruvedia.com>' una vez verifiques tu dominio
+          to: email,
+          subject: 'Hemos recibido tu solicitud - Ruvedia',
+          html: `
+            <div style="font-family: sans-serif; color: #1e293b; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e2e8f0; border-radius: 12px;">
+              <h2 style="color: #2563eb; margin-bottom: 16px;">¡Hola, ${cleanName}!</h2>
+              <p style="font-size: 15px; line-height: 1.6;">Gracias por ponerte en contacto con nosotros.</p>
+              <p style="font-size: 15px; line-height: 1.6;">Hemos recibido correctamente tu solicitud para tu próximo proyecto.</p>
+              <p style="font-size: 15px; line-height: 1.6;">Nuestro equipo está revisando los detalles y nos pondremos en contacto contigo en un plazo máximo de <strong>72 horas laborables</strong> para enviarte una propuesta personalizada.</p>
+              <hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 24px 0;" />
+              <p style="font-size: 12px; color: #64748b; margin-bottom: 16px;">Este es un mensaje automático. Por favor, no respondas directamente a este correo.</p>
+              <p style="font-size: 14px; font-weight: bold; color: #2563eb; margin: 0;">El equipo de Ruvedia</p>
+              <p style="font-size: 12px; color: #64748b; margin: 0;"><a href="https://www.ruvedia.com" style="color: #2563eb; text-decoration: none;">www.ruvedia.com</a></p>
+            </div>
+          `,
+        });
+      } catch (autoResponseErr) {
+        console.warn('La respuesta automática no pudo ser enviada (Restricciones del modo sandbox de Resend):', autoResponseErr);
+      }
     } catch (err) {
       console.error('Error de conexión con Resend:', err);
       return new Response(JSON.stringify({ error: "Error de conexión al enviar el correo" }), {
