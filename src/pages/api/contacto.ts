@@ -193,7 +193,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          from: 'Ruvedia <hola@ruvedia.com>',
+          from: 'Ruvedia <contacto@ruvedia.com>',
           to: 'ruvedia@hotmail.com',
           reply_to: email,
           subject: `Nuevo mensaje de contacto de ${cleanName}`,
@@ -227,7 +227,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            from: 'Ruvedia <hola@ruvedia.com>',
+            from: 'Ruvedia <contacto@ruvedia.com>',
             to: email,
             reply_to: 'ruvedia@hotmail.com',
             subject: 'Hemos recibido tu solicitud - Ruvedia',
