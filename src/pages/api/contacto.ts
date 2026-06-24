@@ -23,7 +23,18 @@ const ContactSchema = z.object({
   turnstile_token: z.string().min(1, { message: 'Por favor, completa el desafío de seguridad.' }),
 });
 
-export const POST: APIRoute = async ({ request }) => {
+export const POST: APIRoute = async (context) => {
+  const { request } = context;
+
+  // Obtener variables de entorno de forma segura e independiente del runtime (Cloudflare Workers vs Node/Local)
+  const env = (context.locals as any)?.runtime?.env || 
+              (typeof process !== 'undefined' ? process.env : {}) || 
+              import.meta.env;
+
+  const nodeEnv = env.NODE_ENV || import.meta.env.MODE || 'production';
+  const TURNSTILE_SECRET_KEY = env.TURNSTILE_SECRET_KEY || '1x00000000000000000000000000000000';
+  const RESEND_API_KEY = env.RESEND_API_KEY;
+
   try {
     // 1. Mitigación de CSRF: Verificar la cabecera Origin o Referer
     const origin = request.headers.get('origin');
@@ -49,7 +60,7 @@ export const POST: APIRoute = async ({ request }) => {
       }
     } else {
       // Si no hay cabecera de origen en absoluto y no es local, bloquear
-      if (process.env.NODE_ENV === 'production') {
+      if (nodeEnv === 'production') {
         return new Response(JSON.stringify({ error: 'Acceso no autorizado (Falta origen de cabecera)' }), {
           status: 400,
           headers: { 'Content-Type': 'application/json' },
@@ -96,8 +107,7 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     // 5. Validar el token de Turnstile contra la API de Cloudflare
-    // Usamos el secret key de prueba si no hay una variable de entorno configurada
-    const TURNSTILE_SECRET_KEY = process.env.TURNSTILE_SECRET_KEY || '1x00000000000000000000000000000000';
+    // (TURNSTILE_SECRET_KEY resuelta al inicio de la función)
     
     try {
       const turnstileVerifyResponse = await fetch(
@@ -145,7 +155,6 @@ export const POST: APIRoute = async ({ request }) => {
     };
 
     // Enviar email usando Resend
-    const RESEND_API_KEY = process.env.RESEND_API_KEY;
     if (!RESEND_API_KEY) {
       console.error("Falta la variable de entorno RESEND_API_KEY");
       return new Response(JSON.stringify({ error: "Error de configuración de correo en el servidor" }), {
