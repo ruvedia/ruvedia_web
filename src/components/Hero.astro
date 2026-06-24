@@ -18,7 +18,7 @@ const beneficios = [
   </div>
   <div
     class="absolute inset-0 bg-cover bg-center opacity-[0.18] pointer-events-none z-0"
-    style="background-image: url('/hero-bg.png');"
+    style="background-image: url('/hero-bg.webp');"
     aria-hidden="true"
   >
   </div>
@@ -187,9 +187,11 @@ const beneficios = [
           class="relative aspect-[4/3] bg-slate-50 overflow-hidden flex items-center justify-center"
         >
           <img
-            src="/portfolio/hero_mockup_v7.png"
+            src="/portfolio/hero_mockup_v7.webp"
             alt="Demostración interactiva de panel web premium y de alto rendimiento"
             class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+            loading="eager"
+            fetchpriority="high"
           />
         </div>
       </div>
