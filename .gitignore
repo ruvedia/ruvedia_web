@@ -21,3 +21,7 @@ pnpm-debug.log*
 
 # system files
 .DS_Store
+
+# security checklists
+cloudflare_security_checklist.md
+cloudflare_security_checklist.html
