@@ -1,6 +1,9 @@
 ---
 // Importa los estilos globales del proyecto (incluye la configuración de Tailwind CSS)
 import '../styles/global.css';
+// Importa las fuentes locales autohospedadas de Fontsource (elimina peticiones a Google CDN)
+import '@fontsource/plus-jakarta-sans/index.css';
+import '@fontsource/space-mono/index.css';
 // Importa el componente de cabecera (Header) para que aparezca en todas las páginas
 import Header from '../components/Header.astro';
 // Importa el componente de pie de página (Footer)
@@ -41,7 +44,9 @@ const { title = "Ruvedia" } = Astro.props;
 		<!-- Renderiza el menú de navegación (Header) en todas las páginas de forma automática -->
 		<Header />
 		<!-- Espacio reservado para inyectar dinámicamente el contenido de las páginas que usen este layout -->
-		<slot />
+		<main id="main-content">
+			<slot />
+		</main>
 		<!-- Renderiza el pie de página (Footer) de forma global en todas las páginas -->
 		<Footer />
 		<!-- Renderiza el banner de cookies de forma global -->

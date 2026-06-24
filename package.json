@@ -14,6 +14,8 @@
   "dependencies": {
     "@astrojs/cloudflare": "^13.0.0",
     "@astrojs/sitemap": "^3.7.3",
+    "@fontsource/plus-jakarta-sans": "^5.2.8",
+    "@fontsource/space-mono": "^5.2.9",
     "@tailwindcss/vite": "^4.3.1",
     "astro": "^6.4.7",
     "isomorphic-dompurify": "^3.18.0",
