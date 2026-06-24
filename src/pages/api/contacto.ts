@@ -195,6 +195,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
         body: JSON.stringify({
           from: 'Ruvedia <hola@ruvedia.com>',
           to: 'ruvedia@hotmail.com',
+          reply_to: email,
           subject: `Nuevo mensaje de contacto de ${cleanName}`,
           html: `
             <h3>Nuevo mensaje de contacto recibido en Ruvedia.com</h3>
@@ -228,6 +229,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
           body: JSON.stringify({
             from: 'Ruvedia <hola@ruvedia.com>',
             to: email,
+            reply_to: 'ruvedia@hotmail.com',
             subject: 'Hemos recibido tu solicitud - Ruvedia',
             html: `
               <div style="font-family: sans-serif; color: #1e293b; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e2e8f0; border-radius: 12px;">
@@ -236,7 +238,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
                 <p style="font-size: 15px; line-height: 1.6;">Hemos recibido correctamente tu solicitud para tu próximo proyecto.</p>
                 <p style="font-size: 15px; line-height: 1.6;">Nuestro equipo está revisando los detalles y nos pondremos en contacto contigo en un plazo máximo de <strong>72 horas laborables</strong> para enviarte una propuesta personalizada.</p>
                 <hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 24px 0;" />
-                <p style="font-size: 12px; color: #64748b; margin-bottom: 16px;">Este es un mensaje automático. Por favor, no respondas directamente a este correo.</p>
+                <p style="font-size: 12px; color: #64748b; margin-bottom: 16px;">Puedes responder directamente a este correo para comunicarte con nosotros, o escribirnos directamente a <a href="mailto:ruvedia@hotmail.com" style="color: #2563eb; text-decoration: none;">ruvedia@hotmail.com</a>.</p>
                 <p style="font-size: 14px; font-weight: bold; color: #2563eb; margin: 0;">El equipo de Ruvedia</p>
                 <p style="font-size: 12px; color: #64748b; margin: 0;"><a href="https://www.ruvedia.com" style="color: #2563eb; text-decoration: none;">www.ruvedia.com</a></p>
               </div>
