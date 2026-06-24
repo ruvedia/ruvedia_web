@@ -36,13 +36,15 @@ export const POST: APIRoute = async (context) => {
   const { request } = context;
 
   // Obtener variables de entorno de forma segura e independiente del runtime (Cloudflare Workers vs Node/Local)
-  const env = (context.locals as any)?.runtime?.env || 
-              (typeof process !== 'undefined' ? process.env : {}) || 
-              import.meta.env;
+  const getEnv = (key: string): string | undefined => {
+    return (context.locals as any)?.runtime?.env?.[key] || 
+           (typeof process !== 'undefined' ? process.env?.[key] : undefined) || 
+           import.meta.env[key];
+  };
 
-  const nodeEnv = env.NODE_ENV || import.meta.env.MODE || 'production';
-  const TURNSTILE_SECRET_KEY = env.TURNSTILE_SECRET_KEY || '1x00000000000000000000000000000000';
-  const RESEND_API_KEY = env.RESEND_API_KEY;
+  const nodeEnv = getEnv('NODE_ENV') || import.meta.env.MODE || 'production';
+  const TURNSTILE_SECRET_KEY = getEnv('TURNSTILE_SECRET_KEY') || '1x00000000000000000000000000000000';
+  const RESEND_API_KEY = getEnv('RESEND_API_KEY');
 
   try {
     // 1. Mitigación de CSRF: Verificar la cabecera Origin o Referer
