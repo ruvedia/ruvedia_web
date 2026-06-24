@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import { z } from 'zod';
 import DOMPurify from 'isomorphic-dompurify';
+import { Resend } from 'resend';
 
 // Forzar que este endpoint se ejecute de forma dinámica en el servidor (modo SSR híbrido)
 export const prerender = false;
@@ -143,8 +144,48 @@ export const POST: APIRoute = async ({ request }) => {
       message: cleanMessage,
     };
 
-    // Aquí iría el procesamiento (ej. guardar en DB, enviar por email con Resend/SendGrid/Nodemailer, etc.)
-    console.log('Formulario de contacto recibido y sanitizado con éxito:', cleanData);
+    // Enviar email usando Resend
+    const RESEND_API_KEY = process.env.RESEND_API_KEY;
+    if (!RESEND_API_KEY) {
+      console.error("Falta la variable de entorno RESEND_API_KEY");
+      return new Response(JSON.stringify({ error: "Error de configuración de correo en el servidor" }), {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+
+    const resend = new Resend(RESEND_API_KEY);
+
+    try {
+      const { data: emailData, error: emailError } = await resend.emails.send({
+        from: 'onboarding@resend.dev',
+        to: 'ruvedia@hotmail.com',
+        subject: `Nuevo mensaje de contacto de ${cleanName}`,
+        html: `
+          <h3>Nuevo mensaje de contacto recibido en Ruvedia.com</h3>
+          <p><strong>Nombre:</strong> ${cleanName}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Teléfono:</strong> ${cleanPhone || 'No proporcionado'}</p>
+          <p><strong>Tipo de proyecto:</strong> ${project_type}</p>
+          <p><strong>Mensaje:</strong></p>
+          <p style="white-space: pre-wrap;">${cleanMessage}</p>
+        `,
+      });
+
+      if (emailError) {
+        console.error('Error de Resend:', emailError);
+        return new Response(JSON.stringify({ error: "Error al enviar el correo a través de Resend" }), {
+          status: 500,
+          headers: { 'Content-Type': 'application/json' },
+        });
+      }
+    } catch (err) {
+      console.error('Error de conexión con Resend:', err);
+      return new Response(JSON.stringify({ error: "Error de conexión al enviar el correo" }), {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
 
     return new Response(
       JSON.stringify({
