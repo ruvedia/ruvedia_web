@@ -53,6 +53,7 @@ export const POST: APIRoute = async (context) => {
   const TURNSTILE_SECRET_KEY = getEnv('TURNSTILE_SECRET_KEY') || '1x00000000000000000000000000000000';
   const RESEND_API_KEY = getEnv('RESEND_API_KEY');
 
+  return new Response("OK");
   try {
     // 1. Mitigación de CSRF: Verificar la cabecera Origin o Referer
     const origin = request.headers.get('origin');
