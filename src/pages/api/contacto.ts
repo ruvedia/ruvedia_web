@@ -1,7 +1,17 @@
 import type { APIRoute } from 'astro';
 import { z } from 'zod';
-import DOMPurify from 'isomorphic-dompurify';
 import { Resend } from 'resend';
+
+// Función de sanitización básica segura para Cloudflare Workers (evita XSS sin requerir APIs de Node/DOM)
+function sanitizeHTML(str: string): string {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#x27;')
+    .replace(/\//g, '&#x2F;');
+}
 
 // Forzar que este endpoint se ejecute de forma dinámica en el servidor (modo SSR híbrido)
 export const prerender = false;
@@ -142,9 +152,9 @@ export const POST: APIRoute = async (context) => {
     }
 
     // 6. Sanitizar las entradas de texto dinámico para prevenir XSS
-    const cleanName = DOMPurify.sanitize(name);
-    const cleanPhone = phone ? DOMPurify.sanitize(phone) : '';
-    const cleanMessage = DOMPurify.sanitize(message);
+    const cleanName = sanitizeHTML(name);
+    const cleanPhone = phone ? sanitizeHTML(phone) : '';
+    const cleanMessage = sanitizeHTML(message);
 
     const cleanData = {
       name: cleanName,
