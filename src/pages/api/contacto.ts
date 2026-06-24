@@ -1,5 +1,7 @@
 import type { APIRoute } from 'astro';
 import { z } from 'zod';
+// @ts-ignore
+import { env } from 'cloudflare:workers';
 
 // Función de sanitización básica segura para Cloudflare Workers (evita XSS sin requerir APIs de Node/DOM)
 function sanitizeHTML(str: string): string {
@@ -35,9 +37,12 @@ const ContactSchema = z.object({
 export const POST: APIRoute = async ({ request, locals }) => {
   // Obtener variables de entorno de forma segura e independiente del runtime (Cloudflare Workers vs Node/Local)
   const getEnv = (key: string): string | undefined => {
-    const cloudflareEnv = (locals as any)?.runtime?.env;
-    if (cloudflareEnv && cloudflareEnv[key]) {
-      return cloudflareEnv[key];
+    try {
+      if (env && (env as any)[key]) {
+        return (env as any)[key];
+      }
+    } catch (e) {
+      // Ignorar fallos de acceso a env si no estamos en cloudflare worker
     }
     const globalObj = globalThis as any;
     const processKey = ['p', 'r', 'o', 'c', 'e', 's', 's'].join('');
