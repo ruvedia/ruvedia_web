@@ -1,6 +1,5 @@
 import type { APIRoute } from 'astro';
 import { z } from 'zod';
-import { Resend } from 'resend';
 
 // Función de sanitización básica segura para Cloudflare Workers (evita XSS sin requerir APIs de Node/DOM)
 function sanitizeHTML(str: string): string {
@@ -164,7 +163,7 @@ export const POST: APIRoute = async (context) => {
       message: cleanMessage,
     };
 
-    // Enviar email usando Resend
+    // Enviar email usando la API REST de Resend directamente (compatible con Cloudflare Workers)
     if (!RESEND_API_KEY) {
       console.error("Falta la variable de entorno RESEND_API_KEY");
       return new Response(JSON.stringify({ error: "Error de configuración de correo en el servidor" }), {
@@ -173,58 +172,69 @@ export const POST: APIRoute = async (context) => {
       });
     }
 
-    const resend = new Resend(RESEND_API_KEY);
-
     try {
-      const { data: emailData, error: emailError } = await resend.emails.send({
-        from: 'onboarding@resend.dev',
-        to: 'ruvedia@hotmail.com',
-        subject: `Nuevo mensaje de contacto de ${cleanName}`,
-        html: `
-          <h3>Nuevo mensaje de contacto recibido en Ruvedia.com</h3>
-          <p><strong>Nombre:</strong> ${cleanName}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Teléfono:</strong> ${cleanPhone || 'No proporcionado'}</p>
-          <p><strong>Tipo de proyecto:</strong> ${project_type}</p>
-          <p><strong>Mensaje:</strong></p>
-          <p style="white-space: pre-wrap;">${cleanMessage}</p>
-        `,
+      const resendResponse = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${RESEND_API_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          from: 'Ruvedia <onboarding@resend.dev>',
+          to: 'ruvedia@hotmail.com',
+          subject: `Nuevo mensaje de contacto de ${cleanName}`,
+          html: `
+            <h3>Nuevo mensaje de contacto recibido en Ruvedia.com</h3>
+            <p><strong>Nombre:</strong> ${cleanName}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Teléfono:</strong> ${cleanPhone || 'No proporcionado'}</p>
+            <p><strong>Tipo de proyecto:</strong> ${project_type}</p>
+            <p><strong>Mensaje:</strong></p>
+            <p style="white-space: pre-wrap;">${cleanMessage}</p>
+          `,
+        }),
       });
 
-      if (emailError) {
-        console.error('Error de Resend:', emailError);
+      if (!resendResponse.ok) {
+        const errText = await resendResponse.text();
+        console.error('Error de la API de Resend:', errText);
         return new Response(JSON.stringify({ error: "Error al enviar el correo a través de Resend" }), {
           status: 500,
           headers: { 'Content-Type': 'application/json' },
         });
       }
 
-      // Enviar respuesta automática al cliente
-      // Nota: Esto fallará temporalmente si usas 'onboarding@resend.dev' porque Resend bloquea envíos a terceros
-      // en cuentas de prueba. Lo ponemos en un try-catch independiente para que no rompa el formulario del sitio.
+      // Enviar respuesta automática al cliente (opcional y en segundo plano)
       try {
-        await resend.emails.send({
-          from: 'Ruvedia <onboarding@resend.dev>', // Cambiar a 'Ruvedia <hola@ruvedia.com>' una vez verifiques tu dominio
-          to: email,
-          subject: 'Hemos recibido tu solicitud - Ruvedia',
-          html: `
-            <div style="font-family: sans-serif; color: #1e293b; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e2e8f0; border-radius: 12px;">
-              <h2 style="color: #2563eb; margin-bottom: 16px;">¡Hola, ${cleanName}!</h2>
-              <p style="font-size: 15px; line-height: 1.6;">Gracias por ponerte en contacto con nosotros.</p>
-              <p style="font-size: 15px; line-height: 1.6;">Hemos recibido correctamente tu solicitud para tu próximo proyecto.</p>
-              <p style="font-size: 15px; line-height: 1.6;">Nuestro equipo está revisando los detalles y nos pondremos en contacto contigo en un plazo máximo de <strong>72 horas laborables</strong> para enviarte una propuesta personalizada.</p>
-              <hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 24px 0;" />
-              <p style="font-size: 12px; color: #64748b; margin-bottom: 16px;">Este es un mensaje automático. Por favor, no respondas directamente a este correo.</p>
-              <p style="font-size: 14px; font-weight: bold; color: #2563eb; margin: 0;">El equipo de Ruvedia</p>
-              <p style="font-size: 12px; color: #64748b; margin: 0;"><a href="https://www.ruvedia.com" style="color: #2563eb; text-decoration: none;">www.ruvedia.com</a></p>
-            </div>
-          `,
+        await fetch('https://api.resend.com/emails', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${RESEND_API_KEY}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            from: 'Ruvedia <onboarding@resend.dev>', // Cambiar a 'Ruvedia <hola@ruvedia.com>' una vez verifiques tu dominio
+            to: email,
+            subject: 'Hemos recibido tu solicitud - Ruvedia',
+            html: `
+              <div style="font-family: sans-serif; color: #1e293b; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e2e8f0; border-radius: 12px;">
+                <h2 style="color: #2563eb; margin-bottom: 16px;">¡Hola, ${cleanName}!</h2>
+                <p style="font-size: 15px; line-height: 1.6;">Gracias por ponerte en contacto con nosotros.</p>
+                <p style="font-size: 15px; line-height: 1.6;">Hemos recibido correctamente tu solicitud para tu próximo proyecto.</p>
+                <p style="font-size: 15px; line-height: 1.6;">Nuestro equipo está revisando los detalles y nos pondremos en contacto contigo en un plazo máximo de <strong>72 horas laborables</strong> para enviarte una propuesta personalizada.</p>
+                <hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 24px 0;" />
+                <p style="font-size: 12px; color: #64748b; margin-bottom: 16px;">Este es un mensaje automático. Por favor, no respondas directamente a este correo.</p>
+                <p style="font-size: 14px; font-weight: bold; color: #2563eb; margin: 0;">El equipo de Ruvedia</p>
+                <p style="font-size: 12px; color: #64748b; margin: 0;"><a href="https://www.ruvedia.com" style="color: #2563eb; text-decoration: none;">www.ruvedia.com</a></p>
+              </div>
+            `,
+          }),
         });
       } catch (autoResponseErr) {
-        console.warn('La respuesta automática no pudo ser enviada (Restricciones del modo sandbox de Resend):', autoResponseErr);
+        console.warn('La respuesta automática no pudo ser enviada:', autoResponseErr);
       }
     } catch (err) {
-      console.error('Error de conexión con Resend:', err);
+      console.error('Error de conexión al enviar el correo:', err);
       return new Response(JSON.stringify({ error: "Error de conexión al enviar el correo" }), {
         status: 500,
         headers: { 'Content-Type': 'application/json' },
