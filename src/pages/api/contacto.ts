@@ -36,13 +36,20 @@ export const POST: APIRoute = async (context) => {
   const { request } = context;
 
   // Obtener variables de entorno de forma segura e independiente del runtime (Cloudflare Workers vs Node/Local)
+  // Obtener variables de entorno de forma segura e independiente del runtime (Cloudflare Workers vs Node/Local)
   const getEnv = (key: string): string | undefined => {
-    return (context.locals as any)?.runtime?.env?.[key] || 
-           (typeof process !== 'undefined' ? process.env?.[key] : undefined) || 
-           import.meta.env[key];
+    const cloudflareEnv = (context.locals as any)?.runtime?.env;
+    if (cloudflareEnv && cloudflareEnv[key]) {
+      return cloudflareEnv[key];
+    }
+    const globalProcess = (globalThis as any).process;
+    if (globalProcess && globalProcess.env && globalProcess.env[key]) {
+      return globalProcess.env[key];
+    }
+    return undefined;
   };
 
-  const nodeEnv = getEnv('NODE_ENV') || import.meta.env.MODE || 'production';
+  const nodeEnv = getEnv('NODE_ENV') || 'production';
   const TURNSTILE_SECRET_KEY = getEnv('TURNSTILE_SECRET_KEY') || '1x00000000000000000000000000000000';
   const RESEND_API_KEY = getEnv('RESEND_API_KEY');
 
