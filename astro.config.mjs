@@ -11,6 +11,10 @@ export default defineConfig({
   site: 'https://ruvedia.com',
   adapter: cloudflare(),
 
+  build: {
+    inlineStylesheets: 'always',
+  },
+
   vite: {
     plugins: [tailwindcss()]
   },
