@@ -1,0 +1,164 @@
+---
+// Array conteniendo los datos de los proyectos de portafolio para modularidad
+const proyectos = [
+  {
+    id: "dental",
+    cliente: "Clínica Dental Premium",
+    categoria: "Clínica & Salud",
+    metrica: "+120% Citas Online",
+    imagen: "/portfolio/dental.webp",
+    descripcion: "Estructura de reservas directa en 3 clics y posicionamiento SEO local para consultas de alta ocupación.",
+    idEnlace: "portfolio-project-dental"
+  },
+  {
+    id: "restaurante",
+    cliente: "Hostelería & Gastrobar",
+    categoria: "Hostelería & Restaurantes",
+    metrica: "+90% Reservas sin Comisión",
+    imagen: "/portfolio/restaurante.webp",
+    descripcion: "Carta web interactiva ultra-rápida y motor de reservas independiente libre de comisiones externas.",
+    idEnlace: "portfolio-project-restaurante"
+  },
+  {
+    id: "fisioterapia",
+    cliente: "Fisioterapia & Bienestar",
+    categoria: "Fisioterapia & Salud",
+    metrica: "PageSpeed 99/100",
+    imagen: "/portfolio/fisioterapia.png",
+    descripcion: "Landing de captación médica optimizada para móviles con acceso inmediato a WhatsApp y agendamiento ágil.",
+    idEnlace: "portfolio-project-fisioterapia"
+  },
+  {
+    id: "estetica",
+    cliente: "Estética & Belleza Premium",
+    categoria: "Estética & Belleza",
+    metrica: "Conversión +35%",
+    imagen: "/portfolio/estetica.webp",
+    descripcion: "Diseño minimalista sofisticado con galerías interactivos antes/después orientado a tratamientos de alto valor.",
+    idEnlace: "portfolio-project-estetica"
+  },
+  {
+    id: "corporativa",
+    cliente: "Consultoría & Firmas B2B",
+    categoria: "Webs Corporativas",
+    metrica: "SEO: 100/100 Google",
+    imagen: "/portfolio/corporativa.png",
+    descripcion: "Portal corporativo serio enfocado en reputación, blog técnico auto-gestionado y captación de leads.",
+    idEnlace: "portfolio-project-corporativa"
+  },
+  {
+    id: "ecommerce",
+    cliente: "E-commerce de Moda & Retail",
+    categoria: "E-commerce & Tiendas Online",
+    metrica: "+200% Ventas Mensuales",
+    imagen: "/portfolio/tienda.png",
+    descripcion: "Tienda online de alto rendimiento con pasarela de pago simplificada en un paso y carga instantánea.",
+    idEnlace: "portfolio-project-tienda"
+  }
+];
+---
+
+<section class="relative py-24 bg-white overflow-hidden border-t border-slate-100" id="portafolio">
+  <!-- Subtle decorative light blue glow -->
+  <div class="absolute top-1/4 right-0 w-96 h-96 rounded-full bg-blue-500/5 blur-[120px] pointer-events-none z-0"></div>
+  <div class="absolute bottom-1/4 -left-20 w-96 h-96 rounded-full bg-indigo-500/5 blur-[120px] pointer-events-none z-0"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6">
+    
+    <!-- Section Header -->
+    <div class="text-center mx-auto max-w-3xl mb-16">
+      <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-100 mb-6 shadow-sm font-mono uppercase">
+        Nuestros Diseños
+      </span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-950 mb-6 leading-tight">
+        Casos de éxito reales que <span class="bg-gradient-to-r from-blue-600 via-indigo-600 to-indigo-500 bg-clip-text text-transparent">impulsan negocios</span>
+      </h2>
+      <p class="text-base text-slate-600 leading-relaxed max-w-2xl mx-auto font-sans">
+        Creamos soluciones digitales personalizadas y optimizadas para cada sector. Haz clic en cualquier diseño para explorar su estrategia y métricas en profundidad.
+      </p>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {proyectos.map((proyecto) => (
+        <div class="group bg-slate-50/50 border border-slate-200/60 rounded-3xl p-4 hover:shadow-2xl hover:bg-white hover:border-blue-500/20 transition-all duration-300 flex flex-col justify-between">
+          
+          <div>
+            <!-- Simulated Browser Frame with Preview Image -->
+            <div class="relative w-full rounded-2xl overflow-hidden border border-slate-200 shadow-sm mb-5 bg-slate-50 flex flex-col aspect-video group-hover:border-blue-500/35 transition-all">
+              <!-- Browser Header -->
+              <div class="h-7 bg-slate-100 border-b border-slate-200/80 px-3 flex items-center gap-1.5 shrink-0 select-none">
+                <span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span>
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+              </div>
+              <!-- Preview Image Container -->
+              <div class="relative flex-1 overflow-hidden">
+                <img 
+                  src={proyecto.imagen} 
+                  alt={`Previsualización del sitio web de ${proyecto.cliente}`}
+                  class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+
+            <!-- Meta details (Category and Metrics) -->
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-[10px] font-bold text-blue-600 uppercase tracking-wider font-mono">{proyecto.categoria}</span>
+              <span class="inline-flex items-center text-[9px] font-bold text-emerald-600 bg-emerald-50 border border-emerald-100 px-2 py-0.5 rounded-md font-mono">
+                ⚡ {proyecto.metrica}
+              </span>
+            </div>
+
+            <!-- Project Title -->
+            <h3 class="text-base font-extrabold text-slate-950 mb-2.5 group-hover:text-blue-600 transition-colors">
+              {proyecto.cliente}
+            </h3>
+
+            <!-- Project Description -->
+            <p class="text-sm text-slate-500 leading-relaxed mb-6 font-sans">
+              {proyecto.descripcion}
+            </p>
+          </div>
+
+          <!-- Project Link -->
+          <div class="flex items-center justify-between mt-auto pt-3 border-t border-slate-100">
+            <a 
+              href="/portfolio" 
+              class="inline-flex items-center text-xs font-bold text-slate-400 hover:text-slate-600 transition-colors"
+            >
+              Ver análisis UX
+            </a>
+            <a 
+              href="/contacto" 
+              id={proyecto.idEnlace}
+              class="inline-flex items-center text-xs font-bold text-slate-800 hover:text-blue-600 transition-colors group/link"
+            >
+              Solicitar demo
+              <svg class="w-3 h-3 ml-1.5 group-hover/link:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+    <!-- Explore All Designs Button -->
+    <div class="text-center mt-12">
+      <a 
+        href="/portfolio"
+        class="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-xs font-bold text-white bg-slate-950 hover:bg-blue-600 shadow-md hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300"
+      >
+        Explorar análisis detallados
+        <svg class="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+

@@ -1,0 +1,525 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Datos extendidos de los casos de éxito/diseños de Ruvedia
+const proyectos = [
+  {
+    id: "dental",
+    cliente: "Clínica Dental Premium",
+    categoria: "Clínica & Salud",
+    tag: "salud",
+    metricaPrincipal: "+120% Citas Online",
+    imagen: "/portfolio/dental.webp",
+    tagline: "Estructura de reservas y SEO local para consultas de alta ocupación.",
+    desafio: "Las clínicas dentales dependen de la confianza local y de la agilidad. Las webs lentas o los formularios de contacto complejos disuaden al paciente, que acaba llamando a la competencia o buscando en directorios de terceros.",
+    solucion: "Desarrollamos una interfaz limpia y aséptica basada en tonos blancos y azul médico, con acceso directo a citas online en solo 3 clics. Optimizamos la visibilidad local mediante marcado de datos estructurados para Google Maps.",
+    
+    // Contenido extendido para las pestañas interactivas
+    estrategia: "Diseñamos un flujo de conversión centrado en la psicología del paciente: reducción de la ansiedad mediante fotos reales de la clínica y el equipo, colocación estratégica de testimonios verificados cerca del botón de acción, y un selector visual de tratamientos (ortodoncia, implantes) que aclara dudas frecuentes antes de agendar.",
+    tecnologia: "Maquetación ultra-eficiente en Astro sin frameworks de Javascript pesados para garantizar un First Input Delay (FID) casi nulo en móviles. Integración de Schema.org para posicionar la clínica en el 'Local Pack' de Google y carga diferida inteligente de imágenes en alta resolución.",
+    impacto: "Aumento en el número de reservas directas completadas online. Puntuación de 100/100 en SEO Mobile y reducción del coste de captación por paciente al eliminar intermediarios de agendas externas.",
+    
+    entregables: ["Reserva interactiva de citas", "Marcado de Datos Estructurados SEO", "Secciones de especialidades médicas", "Testimonios enlazados a Google Reviews"],
+    metricas: [
+      { valor: "0.4s", etiqueta: "Tiempo de carga" },
+      { valor: "100%", etiqueta: "Citas web directas" },
+      { valor: "100%", etiqueta: "SEO Google Mobile" }
+    ],
+    idEnlace: "portfolio-detail-dental"
+  },
+  {
+    id: "restaurante",
+    cliente: "Hostelería & Gastrobar",
+    categoria: "Hostelería & Restaurantes",
+    tag: "hosteleria",
+    metricaPrincipal: "+90% Reservas sin Comisiones",
+    imagen: "/portfolio/restaurante.webp",
+    tagline: "Carta digital ágil y motor de reservas directo e independiente.",
+    desafio: "Los restaurantes sufren comisiones abusivas por cada comensal reservado a través de apps terceras, y pierden clientes en Google al obligarles a descargar archivos PDF pesados para leer el menú.",
+    solucion: "Diseñamos una carta interactiva digital rápida y atractiva, junto a un sistema de reserva directa sin intermediarios comerciales que se conecta directamente al correo y sistema del local.",
+    
+    estrategia: "Enfocamos la web en 'el apetito visual'. Implementamos un slider de platos en alta resolución optimizado para pantallas retina, un menú auto-desplegable categorizado de forma intuitiva, y llamadas a la acción persistentes en móviles ('Reservar Mesa') para captar al cliente hambriento de forma inmediata.",
+    tecnologia: "Imágenes WebP ultra-comprimidas servidas mediante CDN global para velocidad extrema en conexiones 4G/5G en la calle. Estilos ligeros que aseguran que el sitio cargue en menos de medio segundo, evitando que el usuario abandone antes de ver el menú.",
+    impacto: "Ahorro total en comisiones al canalizar más del 90% de las reservas web a través del motor directo propio. Incremento del ticket medio del restaurante gracias a una carta visualmente persuasiva donde los platos recomendados destacan automáticamente.",
+    
+    entregables: ["Carta web autogestionable", "Formulario de reserva sin comisiones", "Optimización de imágenes retina", "Integración con mapas y llamadas"],
+    metricas: [
+      { valor: "0.5s", etiqueta: "Velocidad móvil" },
+      { valor: "+90%", etiqueta: "Reservas directas" },
+      { valor: "0€", etiqueta: "Comisiones cobradas" }
+    ],
+    idEnlace: "portfolio-detail-restaurante"
+  },
+  {
+    id: "fisioterapia",
+    cliente: "Fisioterapia & Bienestar",
+    categoria: "Fisioterapia & Salud",
+    tag: "salud",
+    metricaPrincipal: "PageSpeed 99/100",
+    imagen: "/portfolio/fisioterapia.png",
+    tagline: "Landing de captación médica orientada al contacto directo ágil.",
+    desafio: "Los centros de fisioterapia necesitan convertir visitas en citas físicas de manera urgente. Los formularios estándar o la ausencia de contacto directo provocan altas tasas de rebote en pacientes con dolor agudo.",
+    solucion: "Desarrollamos una landing fluida y minimalista con accesos directos a mensajería instantánea y reservas telefónicas, estructurada en base a tratamientos específicos y bonos promocionales.",
+    
+    estrategia: "Estructura basada en la resolución del síntoma del paciente: el usuario selecciona su tipo de dolor o molestia y es dirigido inmediatamente a un botón interactivo de WhatsApp o llamada directa con el fisioterapeuta de guardia. Diseño cromático calmante y profesional.",
+    tecnologia: "Carga crítica CSS en línea para renderizado instantáneo. Accesibilidad web (A11y) certificada para permitir la navegación fluida a personas con dificultades visuales u otras limitaciones. Código limpio sin librerías externas de rastreo.",
+    impacto: "Aumento del número de citas recibidas directamente por WhatsApp. Disminución del rebote móvil por debajo del 20%, garantizando que casi todos los usuarios que entran por dolor local leen la propuesta de valor.",
+    
+    entregables: ["Acordeones de tarifas y tratamientos", "Accesos rápidos a WhatsApp/Llamadas", "Sección detallada de testimonios", "SEO local on-page optimizado"],
+    metricas: [
+      { valor: "99/100", etiqueta: "PageSpeed Score" },
+      { valor: "+ citas", etiqueta: "Por WhatsApp" },
+      { valor: "100%", etiqueta: "Accesibilidad (A11y)" }
+    ],
+    idEnlace: "portfolio-detail-fisioterapia"
+  },
+  {
+    id: "estetica",
+    cliente: "Estética & Belleza Premium",
+    categoria: "Estética & Belleza",
+    tag: "salud",
+    metricaPrincipal: "Conversión +35%",
+    imagen: "/portfolio/estetica.webp",
+    tagline: "Diseño minimalista sofisticado enfocado en tratamientos de alto valor.",
+    desafio: "Los centros de belleza premium no consiguen justificar el precio de sus tratamientos de alta gama si su escaparate digital (la página web) se ve barato, descuidado o desactualizado.",
+    solucion: "Creamos un diseño con tipografías sofisticadas, espacios generosos y transiciones sutiles que comunican lujo, profesionalidad y exclusividad desde el primer segundo.",
+    
+    estrategia: "Enfoque en el estatus y los resultados: desarrollamos una galería interactiva 'Antes/Después' elegante que muestra la efectividad de la aparatología de la clínica. Los copys están redactados para evocar bienestar, seguridad y rejuvenecimiento.",
+    tecnologia: "Uso de fuentes optimizadas para no ralentizar la carga del navegador, animaciones fluidas gestionadas directamente por hardware gráfico (transformaciones CSS3), e imágenes adaptativas según el tamaño de la pantalla del usuario.",
+    impacto: "Aumento del número de solicitudes de información y una retención media de los usuarios en la web más elevada gracias a una experiencia visual de navegación relajante y premium.",
+    
+    entregables: ["Galería interactiva Antes/Después", "Catálogo de aparatología avanzada", "Formularios de diagnóstico previo", "Diseño responsive de alta costura"],
+    metricas: [
+      { valor: "+35%", etiqueta: "Conversión Premium" },
+      { valor: "0.6s", etiqueta: "Carga de catálogo" },
+      { valor: "2.4x", etiqueta: "Tiempo de permanencia" }
+    ],
+    idEnlace: "portfolio-detail-estetica"
+  },
+  {
+    id: "corporativa",
+    cliente: "Consultoría & Firmas B2B",
+    categoria: "Webs Corporativas",
+    tag: "corporativa",
+    metricaPrincipal: "SEO: 100/100 Google",
+    imagen: "/portfolio/corporativa.png",
+    tagline: "Portal corporativo enfocado en autoridad, marca y generación de leads.",
+    desafio: "Las empresas B2B y consultorías pierden clientes corporativos al mostrar una imagen obsoleta. Además, requieren posicionarse en Google para términos de búsqueda muy específicos de su sector.",
+    solucion: "Programamos una web corporativa robusta, seria y moderna con arquitectura SEO optimizada para captación de leads mediante artículos técnicos y casos prácticos de éxito.",
+    
+    estrategia: "Creamos un sistema para atraer clientes automáticamente como la publicación de artículos de interés en un blog. A cambio del recurso gratuito, el visitante introduce su correo corporativo, convirtiéndose al instante en un contacto de venta interesado.",
+    tecnologia: "Diseño flexible que permite añadir páginas y publicar artículos de forma rápida y sin complicaciones técnicas. La web está programada con la máxima velocidad de carga posible para posicionar en los primeros puestos de Google.",
+    impacto: "Conseguir un flujo constante de leads cualificados mensuales de medianas y grandes empresas. Calificación máxima de 100/100 en la auditoría de SEO técnico de Google.",
+    
+    entregables: ["Blog corporativo integrado", "Descarga de guías y PDFs bajo registro", "Casos de éxito reales", "Formularios de contacto directos para recibir clientes"],
+    metricas: [
+      { valor: "100/100", etiqueta: "SEO Lighthouse" },
+      { valor: "+ contactos", etiqueta: "De clientes/mes" },
+      { valor: "0.3s", etiqueta: "Interactividad (INP)" }
+    ],
+    idEnlace: "portfolio-detail-corporativa"
+  },
+  {
+    id: "ecommerce",
+    cliente: "E-commerce de Moda & Retail",
+    categoria: "E-commerce & Tiendas Online",
+    tag: "ecommerce",
+    metricaPrincipal: "+200% Ventas Online",
+    imagen: "/portfolio/tienda.png",
+    tagline: "Tienda online ágil con proceso de pago en un solo paso.",
+    desafio: "El abandono del carrito de compra ronda el 70% en e-commerce debido a páginas de carga lenta y procesos de pago (checkouts) innecesariamente largos y confusos.",
+    solucion: "Desarrollamos una tienda online enfocada en la velocidad extrema, con un checkout rápido e intuitivo que elimina cualquier distracción al momento de realizar la compra.",
+    
+    estrategia: "Conversión por encima de todo: simplificación radical del menú, filtros de búsqueda instantáneos por talla/color/precio, e implementación de pasarelas de pago modernas (con Shopify) que permiten finalizar la compra con un solo toque digital.",
+    tecnologia: "Carga dinámica de catálogo con hidratación parcial, almacenamiento en caché perimetral para que la tienda cargue igual de rápido en cualquier rincón del país, y redimensionamiento automático de imágenes de producto.",
+    impacto: "Reducción drástica del 40% en carritos abandonados. Duplicación de la tasa de conversión global del e-commerce y aumento en la facturación mensual recurrente de la marca.",
+    
+    entregables: ["Proceso de pago en un solo paso", "Catálogo dinámico autogestionable", "Integración con Shopify", "Panel de stock y pedidos integrado"],
+    metricas: [
+      { valor: "+ aumento", etiqueta: "De ventas mensuales" },
+      { valor: "-40%", etiqueta: "Abandono de carrito" },
+      { valor: "0.5s", etiqueta: "Carga de producto" }
+    ],
+    idEnlace: "portfolio-detail-tienda"
+  }
+];
+
+// Filtros para la cabecera
+const filtros = [
+  { id: "todos", etiqueta: "Todos los diseños" },
+  { id: "salud", etiqueta: "Salud & Clínicas" },
+  { id: "hosteleria", etiqueta: "Hostelería" },
+  { id: "corporativa", etiqueta: "Corporativas" },
+  { id: "ecommerce", etiqueta: "Tiendas Online" }
+];
+---
+
+<Layout title="Portafolio Premium de Diseño y Desarrollo Web | Ruvedia">
+  
+  <!-- Hero Section -->
+  <section class="relative pt-36 pb-20 overflow-hidden bg-slate-50">
+    <!-- Grid decorativo premium -->
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none z-0" aria-hidden="true"></div>
+    
+    <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
+      <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-blue-100/60 text-blue-800 border border-blue-200 mb-6 shadow-sm font-mono">
+        GALERÍA DE PROYECTOS
+      </span>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-950 mb-6 leading-tight max-w-4xl mx-auto">
+        Diseños premium hechos para <span class="bg-gradient-to-r from-blue-600 via-indigo-600 to-indigo-500 bg-clip-text text-transparent">vender más</span>
+      </h1>
+      <p class="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto font-sans">
+        Explora nuestras demostraciones interactivas y proyectos reales. Cada uno ha sido diseñado desde cero buscando el máximo rendimiento en velocidad, SEO y conversión.
+      </p>
+    </div>
+  </section>
+
+  <!-- Interactive Project Showcase Section -->
+  <section class="py-16 bg-white relative">
+    <div class="max-w-7xl mx-auto px-6 space-y-16">
+      
+      <!-- Category Filter Pills -->
+      <div class="flex flex-wrap items-center justify-center gap-2.5 pb-8 border-b border-slate-100">
+        {filtros.map((filtro, idx) => (
+          <button
+            class={`filtro-btn px-5 py-2.5 rounded-full text-xs font-bold border transition-all duration-300 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500/20 ${
+              idx === 0
+                ? "bg-slate-950 border-slate-950 text-white shadow-lg shadow-slate-950/10"
+                : "bg-slate-50 border-slate-200/80 text-slate-600 hover:bg-slate-100 hover:text-slate-950"
+            }`}
+            data-filter={filtro.id}
+            id={`portfolio-filter-${filtro.id}`}
+          >
+            {filtro.etiqueta}
+          </button>
+        ))}
+      </div>
+
+      <!-- Rich Dashboard Projects Grid -->
+      <div class="grid grid-cols-1 gap-20" id="portfolio-container">
+        {proyectos.map((proyecto) => (
+          <div
+            class="proyecto-row bg-slate-50/50 border border-slate-200/60 rounded-3xl p-6 lg:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch transition-all duration-500 hover:bg-white hover:shadow-2xl hover:shadow-slate-100 hover:border-blue-500/10"
+            data-tag={proyecto.tag}
+          >
+            
+            <!-- COLUMN 1: Visual Interactive Simulator (Mockup) -->
+            <div class="lg:col-span-5 flex flex-col justify-between space-y-4">
+              <div class="space-y-3">
+                <div class="flex items-center justify-between">
+                  <span class="px-2.5 py-0.5 rounded text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-100 uppercase tracking-wider font-mono">
+                    {proyecto.categoria}
+                  </span>
+                  <!-- Interactive Device Toggle -->
+                  <div class="flex items-center bg-slate-200/60 p-0.5 rounded-lg text-xs font-bold border border-slate-300/40">
+                    <button 
+                      class="toggle-device-btn px-2.5 py-1 rounded-md bg-white text-slate-950 shadow-sm transition-all focus:outline-none cursor-pointer"
+                      data-device="desktop"
+                      data-project={proyecto.id}
+                    >
+                      Escritorio
+                    </button>
+                    <button 
+                      class="toggle-device-btn px-2.5 py-1 rounded-md text-slate-500 hover:text-slate-950 transition-all focus:outline-none cursor-pointer"
+                      data-device="mobile"
+                      data-project={proyecto.id}
+                    >
+                      Móvil
+                    </button>
+                  </div>
+                </div>
+
+                <h2 class="text-2xl font-extrabold text-slate-950 leading-tight">
+                  {proyecto.cliente}
+                </h2>
+                <p class="text-xs font-bold text-blue-600 font-mono">
+                  {proyecto.tagline}
+                </p>
+              </div>
+
+              <!-- Device Simulation Area -->
+              <div class="relative flex-1 flex items-center justify-center py-6 bg-slate-100/50 rounded-2xl border border-slate-200/50 overflow-hidden min-h-[260px]">
+                
+                <!-- Inner glow decorative -->
+                <div class="absolute inset-0 opacity-[0.015] pointer-events-none bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:16px_16px]"></div>
+                
+                <!-- Desktop Frame Container -->
+                <div 
+                  class="device-container-desktop w-full max-w-[90%] bg-white rounded-xl border border-slate-200 shadow-lg overflow-hidden transition-all duration-500"
+                  id={`device-desktop-${proyecto.id}`}
+                >
+                  <!-- Browser Bar -->
+                  <div class="h-6 bg-slate-50 border-b border-slate-200/80 px-2.5 flex items-center gap-1.5 shrink-0 select-none">
+                    <span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                    <div class="mx-auto w-32 h-3.5 rounded bg-slate-200/50 text-[7px] text-slate-400 flex items-center justify-center font-mono select-none">ruvedia.com/{proyecto.id}</div>
+                  </div>
+                  <!-- Content Image -->
+                  <div class="aspect-video overflow-hidden relative bg-slate-50">
+                    <img 
+                      src={proyecto.imagen} 
+                      alt={`Vista escritorio de ${proyecto.cliente}`}
+                      class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+
+                <!-- Mobile Frame Container (Hidden initially) -->
+                <div 
+                  class="device-container-mobile hidden w-44 bg-slate-950 rounded-[2rem] border-4 border-slate-900 shadow-2xl overflow-hidden transition-all duration-500 relative aspect-[9/16]"
+                  id={`device-mobile-${proyecto.id}`}
+                >
+                  <!-- iPhone Notch -->
+                  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-4 bg-slate-990 rounded-b-xl z-20 flex items-center justify-center">
+                    <span class="w-2 h-2 rounded-full bg-slate-800"></span>
+                  </div>
+                  <!-- Screen Container -->
+                  <div class="w-full h-full overflow-y-auto scrollbar-thin relative bg-white pt-2.5 z-10">
+                    <img 
+                      src={proyecto.imagen} 
+                      alt={`Vista móvil de ${proyecto.cliente}`}
+                      class="w-full object-cover object-top origin-top scale-[1.05]"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Metric Grid Dashboard -->
+              <div class="grid grid-cols-3 gap-3 p-3.5 rounded-xl bg-white border border-slate-200/60 shadow-sm text-center">
+                {proyecto.metricas.map((metrica) => (
+                  <div>
+                    <span class="block text-base font-extrabold text-slate-950">{metrica.valor}</span>
+                    <span class="text-[8px] text-slate-400 font-bold uppercase tracking-wider font-mono">{metrica.etiqueta}</span>
+                  </div>
+                ))}
+              </div>
+
+            </div>
+
+            <!-- COLUMN 2: Tabs navigation & detailed explanations -->
+            <div class="lg:col-span-7 flex flex-col justify-between space-y-6">
+              
+              <!-- Tabs Selector Header -->
+              <div class="flex border-b border-slate-200">
+                <button 
+                  class="tab-btn px-4 py-2.5 border-b-2 border-blue-600 text-blue-600 text-xs font-bold transition-all focus:outline-none cursor-pointer"
+                  data-tab="estrategia"
+                  data-project={proyecto.id}
+                >
+                  🎯 Estrategia & Conversión
+                </button>
+                <button 
+                  class="tab-btn px-4 py-2.5 border-b-2 border-transparent text-slate-500 hover:text-slate-900 text-xs font-bold transition-all focus:outline-none cursor-pointer"
+                  data-tab="tecnologia"
+                  data-project={proyecto.id}
+                >
+                  🛠️ Arquitectura Técnica
+                </button>
+                <button 
+                  class="tab-btn px-4 py-2.5 border-b-2 border-transparent text-slate-500 hover:text-slate-900 text-xs font-bold transition-all focus:outline-none cursor-pointer"
+                  data-tab="impacto"
+                  data-project={proyecto.id}
+                >
+                  📈 Impacto en Negocio
+                </button>
+              </div>
+
+              <!-- Tabs Content Container -->
+              <div class="flex-1 space-y-6">
+                <!-- Estrategia Content -->
+                <div class="tab-content block space-y-4" id={`tab-content-estrategia-${proyecto.id}`}>
+                  <div>
+                    <h4 class="text-sm font-extrabold text-slate-900 uppercase tracking-wider font-mono mb-2.5">El Reto Comercial</h4>
+                    <p class="text-sm text-slate-600 leading-relaxed font-sans">{proyecto.desafio}</p>
+                  </div>
+                  <div>
+                    <h4 class="text-sm font-extrabold text-slate-900 uppercase tracking-wider font-mono mb-2.5">Estrategia de Conversión & UX</h4>
+                    <p class="text-sm text-slate-600 leading-relaxed font-sans">{proyecto.estrategia}</p>
+                  </div>
+                </div>
+
+                <!-- Tecnologia Content -->
+                <div class="tab-content hidden space-y-4" id={`tab-content-tecnologia-${proyecto.id}`}>
+                  <div>
+                    <h4 class="text-sm font-extrabold text-slate-900 uppercase tracking-wider font-mono mb-2.5">Solución Técnica Desarrollada</h4>
+                    <p class="text-sm text-slate-600 leading-relaxed font-sans">{proyecto.solucion}</p>
+                  </div>
+                  <div>
+                    <h4 class="text-sm font-extrabold text-slate-900 uppercase tracking-wider font-mono mb-2.5">Detalles de Arquitectura & Código</h4>
+                    <p class="text-sm text-slate-600 leading-relaxed font-sans">{proyecto.tecnologia}</p>
+                  </div>
+                </div>
+
+                <!-- Impacto Content -->
+                <div class="tab-content hidden space-y-4" id={`tab-content-impacto-${proyecto.id}`}>
+                  <div>
+                    <h4 class="text-sm font-extrabold text-slate-900 uppercase tracking-wider font-mono mb-2.5">Resultados del Negocio</h4>
+                    <p class="text-sm text-slate-600 leading-relaxed font-sans">{proyecto.impacto}</p>
+                  </div>
+                  <div>
+                    <h4 class="text-sm font-extrabold text-slate-900 uppercase tracking-wider font-mono mb-2.5">Entregables Clave en la Web</h4>
+                    <div class="flex flex-wrap gap-1.5 pt-1">
+                      {proyecto.entregables.map((entregable) => (
+                        <span class="text-xs font-semibold bg-white border border-slate-200 text-slate-700 px-2.5 py-1 rounded-lg shadow-sm">
+                          ✓ {entregable}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Button CTA -->
+              <div class="pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4">
+                <span class="text-xs text-slate-400 font-semibold font-mono">
+                  Demo funcional optimizada ⚡
+                </span>
+                <a
+                  href="/contacto"
+                  id={proyecto.idEnlace}
+                  class="inline-flex items-center justify-center px-6 py-3 rounded-full text-sm font-bold text-white bg-blue-600 hover:bg-slate-950 shadow-md shadow-blue-500/15 hover:shadow-lg hover:shadow-slate-950/20 transition-all duration-300 cursor-pointer"
+                >
+                  Solicitar demo similar
+                  <svg class="w-3.5 h-3.5 ml-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+
+            </div>
+
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Bottom CTA Section -->
+  <section class="py-24 bg-slate-950 text-white relative overflow-hidden border-t border-slate-900">
+    <div class="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+    
+    <div class="relative z-10 max-w-4xl mx-auto px-6 text-center space-y-8">
+      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">¿Hacemos realidad tu proyecto?</h2>
+      <p class="text-sm text-slate-400 leading-relaxed max-w-xl mx-auto font-sans">
+        Ponte en contacto con nuestro equipo de desarrollo. Diseñamos y programamos tu página web en un plazo máximo de 20 días laborables bajo los mayores estándares del sector.
+      </p>
+      <div>
+        <a
+          href="/contacto"
+          id="portfolio-final-cta-btn-rich"
+          class="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-xs font-bold text-slate-950 bg-white hover:bg-slate-100 hover:shadow-xl hover:shadow-white/5 hover:scale-110 transition-all duration-300"
+        >
+          Iniciar Proyecto Sin Compromiso
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<!-- Client Side script for interactive filtering, device preview, and tabs -->
+<script is:inline>
+  (function() {
+    // 1. FILTERING Lógica
+    const filterButtons = document.querySelectorAll(".filtro-btn");
+    const projectRows = document.querySelectorAll(".proyecto-row");
+
+    filterButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const filter = btn.getAttribute("data-filter");
+
+        // Cambiar clases activas del filtro
+        filterButtons.forEach((b) => {
+          b.classList.remove("bg-slate-950", "border-slate-950", "text-white", "shadow-lg", "shadow-slate-950/10");
+          b.classList.add("bg-slate-50", "border-slate-200/80", "text-slate-600");
+        });
+        btn.classList.add("bg-slate-950", "border-slate-950", "text-white", "shadow-lg", "shadow-slate-950/10");
+        btn.classList.remove("bg-slate-50", "border-slate-200/80", "text-slate-600");
+
+        // Mostrar u ocultar filas
+        projectRows.forEach((row) => {
+          const rowTag = row.getAttribute("data-tag");
+          if (filter === "todos" || rowTag === filter) {
+            row.classList.remove("hidden");
+            row.style.opacity = "0";
+            row.style.transform = "translateY(12px)";
+            setTimeout(() => {
+              row.style.opacity = "1";
+              row.style.transform = "translateY(0)";
+            }, 60);
+          } else {
+            row.classList.add("hidden");
+          }
+        });
+      });
+    });
+
+    // 2. DEVICE PREVIEW SIMULATOR Lógica
+    const deviceButtons = document.querySelectorAll(".toggle-device-btn");
+    deviceButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const device = btn.getAttribute("data-device");
+        const projectId = btn.getAttribute("data-project");
+        
+        // Contenedores del proyecto específico
+        const desktopContainer = document.getElementById(`device-desktop-${projectId}`);
+        const mobileContainer = document.getElementById(`device-mobile-${projectId}`);
+        
+        // Todos los botones del proyecto específico
+        const siblings = btn.parentNode.querySelectorAll(".toggle-device-btn");
+        siblings.forEach((sib) => {
+          sib.classList.remove("bg-white", "text-slate-950", "shadow-sm");
+          sib.classList.add("text-slate-500");
+        });
+        btn.classList.add("bg-white", "text-slate-950", "shadow-sm");
+        btn.classList.remove("text-slate-500");
+
+        if (device === "desktop") {
+          desktopContainer.classList.remove("hidden");
+          mobileContainer.classList.add("hidden");
+        } else {
+          desktopContainer.classList.add("hidden");
+          mobileContainer.classList.remove("hidden");
+        }
+      });
+    });
+
+    // 3. TABS Lógica
+    const tabButtons = document.querySelectorAll(".tab-btn");
+    tabButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const targetTab = btn.getAttribute("data-tab");
+        const projectId = btn.getAttribute("data-project");
+        
+        // Elementos del proyecto específico
+        const projectRow = btn.closest(".proyecto-row");
+        const tabs = projectRow.querySelectorAll(".tab-btn");
+        const contents = projectRow.querySelectorAll(".tab-content");
+
+        // Cambiar clases del header de pestañas
+        tabs.forEach((tab) => {
+          tab.classList.remove("border-blue-600", "text-blue-600");
+          tab.classList.add("border-transparent", "text-slate-500");
+        });
+        btn.classList.add("border-blue-600", "text-blue-600");
+        btn.classList.remove("border-transparent", "text-slate-500");
+
+        // Cambiar visibilidad de contenidos
+        contents.forEach((content) => {
+          content.classList.add("hidden");
+        });
+        
+        const activeContent = document.getElementById(`tab-content-${targetTab}-${projectId}`);
+        if (activeContent) {
+          activeContent.classList.remove("hidden");
+        }
+      });
+    });
+  })();
+</script>
+

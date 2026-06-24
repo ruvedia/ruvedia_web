@@ -1,0 +1,234 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Datos extendidos del método de trabajo paso a paso (6 pasos de Hoja de Ruta)
+const pasos = [
+  {
+    numero: "01",
+    titulo: "Propuesta Comercial",
+    dias: "Días 1 y 3",
+    fase: "Fase 1: Aclaración e Inicio",
+    descripcion: "Resolvemos cualquier duda o consulta que pueda surgir tras revisar y leer esta propuesta comercial. Al mismo tiempo definimos las expectativas iniciales y firmamos el acuerdo.",
+    detalles: "El objetivo es despejar cualquier duda técnica o administrativa antes de arrancar, garantizando una relación transparente y fluida desde el primer minuto.",
+    entregables: ["Aclaración de alcances técnicos", "Definición del calendario de entregas", "Resolución de dudas iniciales", "Firma de acuerdo de desarrollo"],
+    iconColor: "text-blue-600 bg-blue-50 border-blue-100",
+    imagen: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    numero: "02",
+    titulo: "Envío del Material Básico",
+    dias: "Días 4 y 6",
+    fase: "Fase 2: Recopilación de Contenido",
+    descripcion: "Se recopila y facilita el material básico para el sitio web: el logotipo oficial de la clínica, los textos informativos detallando los tratamientos principales y las fotografías de la clínica y vuestro personal.",
+    detalles: "Contar con material real y de buena calidad desde el inicio nos permite maquetar el diseño de forma que se adapte exactamente a la estética visual de tu negocio.",
+    entregables: ["Logotipo corporativo en alta calidad", "Textos explicativos de tratamientos principales", "Fotografías reales de vuestra clínica/local", "Retratos profesionales de vuestro personal"],
+    iconColor: "text-indigo-600 bg-indigo-50 border-indigo-100",
+    imagen: "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    numero: "03",
+    titulo: "Maquetación Final",
+    dias: "Días 7 al 12",
+    fase: "Fase 3: Diseño y Programación",
+    descripcion: "Integramos todo el material proporcionado en el diseño a medida de la web. Programamos la estructura, realizamos pruebas de velocidad de carga optimizada y lanzamos la demo interactiva.",
+    detalles: "En esta fase programamos el código limpio, optimizamos las imágenes y preparamos todos los flujos interactivos para que la web sea rápida e intuitiva.",
+    entregables: ["Maquetación visual a medida", "Integración de textos y fotografías", "Optimización de velocidad de carga (PageSpeed)", "Publicación de demo privada de pruebas"],
+    iconColor: "text-violet-600 bg-violet-50 border-violet-100",
+    imagen: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    numero: "04",
+    titulo: "Revisión de Maquetación",
+    dias: "Días 13 y 14",
+    fase: "Fase 4: Control de Calidad y Feedback",
+    descripcion: "Repasamos detalladamente la maquetación de la web. El cliente navega por la demo en móviles y escritorio, analiza el diseño final y da su visto bueno.",
+    detalles: "Nos aseguramos de corregir hasta el más mínimo detalle visual y de contenido técnico para que la web represente con orgullo a tu marca.",
+    entregables: ["Auditoría de diseño UI/UX", "Feedback de textos y maquetación", "Ajustes rápidos de diseño basados en comentarios", "Aprobación formal del diseño definitivo"],
+    iconColor: "text-pink-600 bg-pink-50 border-pink-100",
+    imagen: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    numero: "05",
+    titulo: "Registro del Dominio",
+    dias: "Día 15",
+    fase: "Fase 5: Registro y Configuración",
+    descripcion: "Solicitamos y gestionamos los datos pertinentes y técnicos para dar de alta el dominio oficial de la marca y configurar los servidores seguros.",
+    detalles: "Nos encargamos de toda la complejidad técnica: servidores de nombres DNS, certificados de seguridad SSL y protección inicial Cloudflare.",
+    entregables: ["Alta de dominio oficial personalizado", "Configuración de DNS y Hosting rápido", "Activación de certificado de seguridad SSL", "Creación de correos corporativos oficiales"],
+    iconColor: "text-amber-600 bg-amber-50 border-amber-100",
+    imagen: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    numero: "06",
+    titulo: "Lanzamiento Final",
+    dias: "Días 16 al 20",
+    fase: "Fase 6: Publicación y Entrega",
+    descripcion: "Una vez verificados minuciosamente todos los puntos anteriores con éxito, procedemos al lanzamiento oficial y definitivo de la web terminada para que tus clientes puedan entrar.",
+    detalles: "Indexamos tu web en Google y te entregamos los accesos del panel administrativo para que tengas control total de tu nuevo sitio web.",
+    entregables: ["Activación pública en servidor de producción", "Alta en Google Search Console para indexar", "Formación autogestionable del contenido de la web", "Inicio del periodo de soporte continuo"],
+    iconColor: "text-emerald-600 bg-emerald-50 border-emerald-100",
+    imagen: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80"
+  }
+];
+---
+
+<Layout title="Hoja de Ruta y Proceso de Trabajo | Ruvedia">
+  
+  <!-- Hero Section -->
+  <section class="relative pt-36 pb-20 overflow-hidden bg-slate-50">
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none z-0" aria-hidden="true"></div>
+    
+    <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
+      <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-blue-100/60 text-blue-800 border border-blue-200 mb-6 shadow-sm font-mono uppercase">
+        NUESTRO MÉTODO
+      </span>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-950 mb-6 leading-tight max-w-4xl mx-auto">
+        Hoja de ruta transparente y <span class="bg-gradient-to-r from-blue-600 via-indigo-600 to-indigo-500 bg-clip-text text-transparent">estructurada paso a paso</span>
+      </h1>
+      <p class="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto font-sans">
+        Con el fin de agilizar los tiempos y asegurar la máxima calidad técnica, seguimos esta hoja de ruta de 6 pasos de principio a fin.
+      </p>
+    </div>
+  </section>
+
+  <!-- Interactive Timeline Section -->
+  <section class="py-20 bg-white relative">
+    <div class="max-w-6xl mx-auto px-6 relative">
+      
+      <!-- Vertical connecting line base with progress overlay -->
+      <div class="absolute left-[72px] sm:left-[88px] top-6 bottom-6 w-[6px] bg-slate-200 z-10 rounded-full overflow-hidden">
+        <div id="timeline-progress-line" class="absolute top-0 left-0 w-full bg-gradient-to-b from-blue-600 via-indigo-500 to-emerald-500 transition-all duration-300 ease-out" style="height: 0%;"></div>
+      </div>
+      
+      <!-- Staggered Phase Rows -->
+      <div class="space-y-20 relative z-20">
+        {pasos.map((paso, idx) => (
+          <div class="relative grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center pl-16 sm:pl-24">
+            
+            <!-- Glowing Step Number badge placed exactly on the line -->
+            <div class="absolute left-5 sm:left-9 top-2 z-20 flex items-center justify-center w-14 h-14 rounded-2xl font-extrabold text-base border shadow-md font-mono bg-slate-950 text-white border-slate-800 group-hover:scale-105 transition-transform duration-300">
+              {paso.numero}
+            </div>
+
+            <!-- Phase image (Staggered layout) -->
+            <div class={`lg:col-span-5 ${idx % 2 === 1 ? 'lg:order-last' : ''}`}>
+              <div class="relative bg-slate-50 rounded-3xl border border-slate-200/60 p-4 overflow-hidden group hover:shadow-xl transition-all duration-300">
+                
+                <!-- Days badge -->
+                <div class="absolute top-6 right-6 z-20 text-xs font-bold text-slate-800 bg-white border border-slate-200/80 px-3.5 py-1.5 rounded-lg shadow-sm font-mono">
+                  {paso.dias}
+                </div>
+
+                <!-- High Quality Image inside card -->
+                <div class="w-full aspect-[4/3] rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-inner">
+                  <img 
+                    src={paso.imagen} 
+                    alt={paso.titulo} 
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                    loading="lazy" 
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Detailed Phase Copy -->
+            <div class="lg:col-span-7 space-y-5">
+              <div class="space-y-2">
+                <span class="text-xs font-bold text-blue-600 uppercase tracking-widest font-mono">
+                  {paso.fase}
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-950 leading-tight">
+                  {paso.titulo}
+                </h2>
+              </div>
+
+              <div class="space-y-4">
+                <p class="text-sm sm:text-base text-slate-600 leading-relaxed font-sans">
+                  {paso.descripcion}
+                </p>
+                <p class="text-sm text-slate-500 leading-relaxed font-sans border-l-2 border-blue-500 pl-4 italic">
+                  {paso.detalles}
+                </p>
+              </div>
+
+              <!-- Tareas grid dashboard -->
+              <div class="pt-4 border-t border-slate-100 space-y-3">
+                <h4 class="text-sm font-bold text-slate-950 uppercase tracking-wider font-mono">Tareas clave en esta fase:</h4>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {paso.entregables.map((entregable) => (
+                    <div class="flex items-start gap-2 text-sm text-slate-700 font-sans">
+                      <span class="text-emerald-500 font-bold mt-0.5">✓</span>
+                      <span>{entregable}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Bottom CTA Section -->
+  <section class="py-24 bg-slate-950 text-white relative overflow-hidden border-t border-slate-900">
+    <div class="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+    
+    <div class="relative z-10 max-w-4xl mx-auto px-6 text-center space-y-8">
+      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">¿Hablamos sobre tu proyecto?</h2>
+      <p class="text-sm text-slate-400 leading-relaxed max-w-xl mx-auto font-sans">
+        Entregamos tu web de forma profesional y ágil bajo plazos cerrados. Ponte en contacto hoy mismo con nosotros.
+      </p>
+      <div>
+        <a
+          href="/contacto"
+          id="metodo-final-cta-btn"
+          class="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-xs font-bold text-slate-950 bg-white hover:bg-slate-100 hover:shadow-xl hover:shadow-white/5 hover:scale-110 transition-all duration-300"
+        >
+          Iniciar Proyecto
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<script is:inline>
+  (function() {
+    const progressLine = document.getElementById("timeline-progress-line");
+    const timelineSection = progressLine ? progressLine.closest("section") : null;
+    
+    console.log("Timeline Debug - Line element:", progressLine);
+    console.log("Timeline Debug - Section element:", timelineSection);
+    
+    if (!progressLine || !timelineSection) return;
+
+    function updateTimelineProgress() {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const windowHeight = window.innerHeight;
+      
+      const sectionTop = timelineSection.offsetTop;
+      const sectionHeight = timelineSection.offsetHeight;
+
+      const triggerStart = sectionTop - windowHeight * 0.7;
+      const triggerEnd = sectionTop + sectionHeight - windowHeight * 0.7;
+      
+      let progress = (scrollTop - triggerStart) / (triggerEnd - triggerStart);
+
+      if (progress < 0) progress = 0;
+      if (progress > 1) progress = 1;
+
+      console.log(`Timeline Debug - Scroll: ${scrollTop}, Top: ${sectionTop}, Progress: ${progress}`);
+
+      progressLine.style.height = `${progress * 100}%`;
+    }
+
+    window.addEventListener("scroll", updateTimelineProgress);
+    window.addEventListener("resize", updateTimelineProgress);
+    
+    updateTimelineProgress();
+  })();
+</script>

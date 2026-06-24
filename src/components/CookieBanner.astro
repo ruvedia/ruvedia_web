@@ -1,0 +1,231 @@
+---
+---
+<!-- Floating Button to Reopen Cookie Settings -->
+<button 
+  id="cookie-settings-trigger" 
+  class="fixed bottom-6 left-6 z-[999] bg-white text-blue-600 p-3.5 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300 flex items-center justify-center border border-slate-200 cursor-pointer opacity-0 pointer-events-none hover:rotate-12"
+  aria-label="Configurar Cookies"
+>
+  <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+  </svg>
+</button>
+
+<!-- Cookie Consent Banner -->
+<div 
+  id="cookie-banner" 
+  class="fixed bottom-6 left-6 max-w-md w-[calc(100vw-3rem)] bg-slate-950/95 backdrop-blur-xl border border-white/10 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.3)] z-[1000] transform translate-y-12 opacity-0 transition-all duration-500 ease-out hidden"
+>
+  <div class="p-6 sm:p-7">
+    <!-- Header banner -->
+    <div class="flex items-center gap-3.5 mb-4">
+      <div class="w-10 h-10 bg-blue-500/20 text-blue-400 rounded-xl flex items-center justify-center flex-shrink-0">
+        <!-- SVG Cookie Icon -->
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l-.707-.707M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      </div>
+      <div>
+        <h3 class="text-white font-bold text-sm">Preferencias de Privacidad</h3>
+        <p class="text-slate-400 text-[10px] font-medium">Gestión de cookies de Ruvedia</p>
+      </div>
+    </div>
+    
+    <!-- Description -->
+    <p class="text-slate-300 text-xs leading-relaxed mb-5">
+      Utilizamos cookies propias estrictamente necesarias para el correcto funcionamiento de la web. Puede leer más sobre cómo protegemos sus datos en nuestra 
+      <a href="/politica-de-cookies" class="text-blue-400 font-semibold underline hover:text-blue-300 transition-colors">Política de Cookies</a> y <a href="/politica-de-privacidad" class="text-blue-400 font-semibold underline hover:text-blue-300 transition-colors">Política de Privacidad</a>.
+    </p>
+
+    <!-- Action Buttons -->
+    <div class="flex flex-col gap-2">
+      <button 
+        id="cookie-accept" 
+        class="w-full px-4 py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl transition-all text-xs shadow-md hover:shadow-lg shadow-blue-600/10 cursor-pointer text-center active:scale-98"
+      >
+        Aceptar todas
+      </button>
+      <div class="flex gap-2">
+        <button 
+          id="cookie-necessary" 
+          class="flex-1 px-4 py-2.5 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-xl border border-white/10 transition-all text-[11px] cursor-pointer text-center active:scale-98"
+        >
+          Solo necesarias
+        </button>
+        <button 
+          id="cookie-deny" 
+          class="flex-1 px-4 py-2.5 bg-white/5 hover:bg-white/10 text-slate-300 font-semibold rounded-xl border border-white/5 transition-all text-[11px] cursor-pointer text-center active:scale-98"
+        >
+          Rechazar todas
+        </button>
+      </div>
+      <button 
+        id="cookie-customize-trigger" 
+        class="w-full px-4 py-1.5 bg-transparent hover:text-white text-slate-400 font-semibold transition-all text-[11px] cursor-pointer text-center hover:underline flex items-center justify-center gap-1"
+      >
+        <span>Personalizar configuración</span>
+        <!-- Chevron Icon -->
+        <svg id="customize-arrow" class="w-3 h-3 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Customizable Expandable Panel -->
+    <div 
+      id="cookie-custom-panel" 
+      class="mt-4 pt-4 border-t border-white/10 max-h-0 overflow-hidden opacity-0 transition-all duration-300 ease-in-out"
+    >
+      <div class="flex flex-col gap-3 mb-4">
+        <!-- Technical Cookies -->
+        <div class="flex items-start justify-between gap-3 bg-white/5 p-3 rounded-xl border border-white/5">
+          <div class="flex-1">
+            <h4 class="text-white text-xs font-bold flex items-center gap-1.5">
+              <span>Estrictamente Necesarias</span>
+              <span class="px-1.5 py-0.5 bg-blue-500/10 text-[9px] text-blue-400 font-semibold rounded-full uppercase tracking-wider">Obligatorio</span>
+            </h4>
+            <p class="text-[10px] text-slate-400 leading-normal mt-1">Garantizan el funcionamiento correcto, la seguridad y la accesibilidad del sitio web.</p>
+          </div>
+          <div class="relative inline-flex items-center cursor-not-allowed pt-0.5">
+            <div class="w-7 h-4 bg-blue-600 rounded-full flex items-center px-0.5 justify-end">
+              <div class="bg-white w-3 h-3 rounded-full"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Analytical Cookies -->
+        <div class="flex items-start justify-between gap-3 bg-white/5 p-3 rounded-xl border border-white/5">
+          <div class="flex-1">
+            <h4 class="text-white text-xs font-bold flex items-center gap-1.5">
+              <span>Analíticas y Rendimiento</span>
+              <span class="px-1.5 py-0.5 bg-white/10 text-[9px] text-slate-300 font-medium rounded-full uppercase tracking-wider">Opcional</span>
+            </h4>
+            <p class="text-[10px] text-slate-400 leading-normal mt-1">Nos ayudan a entender estadísticamente y de forma totalmente anónima cómo interactúan los usuarios con nuestra web.</p>
+          </div>
+          <label class="relative inline-flex items-center cursor-pointer pt-0.5">
+            <input type="checkbox" id="cookie-opt-analytics" class="sr-only peer">
+            <div class="w-7 h-4 bg-white/10 rounded-full peer peer-focus:ring-0 peer-checked:after:translate-x-[12px] peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-blue-600"></div>
+          </label>
+        </div>
+      </div>
+      
+      <button 
+        id="cookie-save-custom" 
+        class="w-full px-4 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl transition-all text-xs cursor-pointer text-center active:scale-98"
+      >
+        Guardar mi selección
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const banner = document.getElementById("cookie-banner");
+    const acceptBtn = document.getElementById("cookie-accept");
+    const necessaryBtn = document.getElementById("cookie-necessary");
+    const denyBtn = document.getElementById("cookie-deny");
+    const triggerBtn = document.getElementById("cookie-settings-trigger");
+    const customizeTrigger = document.getElementById("cookie-customize-trigger");
+    const customPanel = document.getElementById("cookie-custom-panel");
+    const arrow = document.getElementById("customize-arrow");
+    const saveCustomBtn = document.getElementById("cookie-save-custom");
+    const optAnalytics = document.getElementById("cookie-opt-analytics") as HTMLInputElement;
+
+    if (!banner || !acceptBtn || !necessaryBtn || !denyBtn || !triggerBtn || !customizeTrigger || !customPanel || !arrow || !saveCustomBtn || !optAnalytics) return;
+
+    let isPanelOpen = false;
+
+    // Show Banner
+    const showBanner = () => {
+      triggerBtn.classList.add("opacity-0", "pointer-events-none");
+      triggerBtn.classList.remove("opacity-100");
+      
+      banner.classList.remove("hidden");
+      void banner.offsetWidth;
+      banner.classList.remove("translate-y-12", "opacity-0");
+    };
+
+    // Hide Banner
+    const hideBanner = () => {
+      banner.classList.add("translate-y-12", "opacity-0");
+      setTimeout(() => {
+        banner.classList.add("hidden");
+        triggerBtn.classList.remove("opacity-0", "pointer-events-none");
+        triggerBtn.classList.add("opacity-100");
+      }, 500);
+    };
+
+    // Customize toggle
+    customizeTrigger.addEventListener("click", () => {
+      isPanelOpen = !isPanelOpen;
+      if (isPanelOpen) {
+        customPanel.classList.remove("max-h-0", "opacity-0");
+        customPanel.style.maxHeight = "500px";
+        customPanel.style.opacity = "1";
+        arrow.style.transform = "rotate(180deg)";
+      } else {
+        customPanel.style.maxHeight = "0";
+        customPanel.style.opacity = "0";
+        arrow.style.transform = "rotate(0deg)";
+        setTimeout(() => {
+          customPanel.classList.add("max-h-0", "opacity-0");
+        }, 300);
+      }
+    });
+
+    // Check if consent already exists
+    setTimeout(() => {
+      if (!localStorage.getItem("gdpr_consent")) {
+        showBanner();
+      } else {
+        triggerBtn.classList.remove("opacity-0", "pointer-events-none");
+        triggerBtn.classList.add("opacity-100");
+        
+        const consent = localStorage.getItem("gdpr_consent");
+        if (consent === "all" || consent === "analytics") {
+          optAnalytics.checked = true;
+        } else {
+          optAnalytics.checked = false;
+        }
+      }
+    }, 1200);
+
+    // Accept all
+    acceptBtn.addEventListener("click", () => {
+      localStorage.setItem("gdpr_consent", "all");
+      optAnalytics.checked = true;
+      hideBanner();
+    });
+
+    // Only necessary
+    necessaryBtn.addEventListener("click", () => {
+      localStorage.setItem("gdpr_consent", "necessary");
+      optAnalytics.checked = false;
+      hideBanner();
+    });
+
+    // Deny all
+    denyBtn.addEventListener("click", () => {
+      localStorage.setItem("gdpr_consent", "denied");
+      optAnalytics.checked = false;
+      hideBanner();
+    });
+
+    // Save custom settings
+    saveCustomBtn.addEventListener("click", () => {
+      if (optAnalytics.checked) {
+        localStorage.setItem("gdpr_consent", "analytics");
+      } else {
+        localStorage.setItem("gdpr_consent", "necessary");
+      }
+      hideBanner();
+    });
+
+    // Settings trigger click
+    triggerBtn.addEventListener("click", () => {
+      showBanner();
+    });
+  });
+</script>

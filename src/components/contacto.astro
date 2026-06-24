@@ -1,0 +1,353 @@
+---
+// Componente de contacto de alta conversión para Ruvedia.com
+---
+
+<section class="relative py-24 bg-slate-50/80 overflow-hidden border-t border-slate-100" id="contacto">
+  <!-- Soft background glows -->
+  <div class="absolute top-0 right-0 w-96 h-96 rounded-full bg-blue-500/5 blur-[120px] pointer-events-none z-0"></div>
+  <div class="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-indigo-500/5 blur-[120px] pointer-events-none z-0"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      
+      <!-- Left Column: Trust Info & Quick Contact Links -->
+      <div class="lg:col-span-5 space-y-8">
+        <div>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100 mb-6 shadow-sm">
+            Contacto
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-950 mb-6 leading-tight">
+            ¿Hablamos de tu <span class="bg-gradient-to-r from-blue-600 via-indigo-600 to-indigo-500 bg-clip-text text-transparent">próximo proyecto</span>?
+          </h2>
+          <p class="text-base text-slate-600 leading-relaxed">
+            Cuéntanos qué necesitas y te responderemos con una propuesta a medida y presupuesto sin compromiso en menos de 72 horas laborables.
+          </p>
+        </div>
+
+        <!-- Trust Info Cards -->
+        <div class="space-y-4">
+          <!-- WhatsApp Link -->
+          <a
+            href="https://wa.me/34600000000" 
+            target="_blank"
+            rel="noopener noreferrer"
+            id="contact-whatsapp-link"
+            class="flex items-center gap-4 p-4 bg-white rounded-2xl border border-slate-100 hover:border-emerald-500/25 hover:shadow-md hover:shadow-emerald-500/5 transition-all duration-300 group"
+          >
+            <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 border border-emerald-100 group-hover:scale-105 transition-transform" aria-hidden="true">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.963C16.588 2.019 14.12 1 11.488 1c-5.448 0-9.873 4.372-9.877 9.802-.001 1.777.466 3.514 1.353 5.05L1.936 21.84l6.108-1.593c.003-.001.006-.002.009-.003z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="text-[10px] text-slate-400 font-bold uppercase tracking-wider flex items-center gap-1.5">
+                WhatsApp Directo
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" aria-hidden="true"></span>
+              </div>
+              <span class="text-sm font-bold text-slate-800 group-hover:text-emerald-600 transition-colors">Escríbenos en un clic</span>
+            </div>
+          </a>
+
+          <!-- Email Direct -->
+          <a
+            href="mailto:hola@ruvedia.com"
+            id="contact-email-link"
+            class="flex items-center gap-4 p-4 bg-white rounded-2xl border border-slate-100 hover:border-blue-500/25 hover:shadow-md hover:shadow-blue-500/5 transition-all duration-300 group"
+          >
+            <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 border border-blue-100 group-hover:scale-105 transition-transform" aria-hidden="true">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <div>
+              <div class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Correo Electrónico</div>
+              <span class="text-sm font-bold text-slate-800 group-hover:text-blue-600 transition-colors">hola@ruvedia.com</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Security / Guarantee features -->
+        <div class="pt-6 border-t border-slate-200/60 grid grid-cols-2 gap-4">
+          <div class="flex items-start gap-2.5">
+            <svg class="w-4.5 h-4.5 text-blue-600 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+            <span class="text-xs text-slate-500 font-medium leading-relaxed">Privacidad garantizada y cumplimiento estricto del RGPD.</span>
+          </div>
+          <div class="flex items-start gap-2.5">
+            <svg class="w-4.5 h-4.5 text-blue-600 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+            <span class="text-xs text-slate-500 font-medium leading-relaxed">Presupuesto y hoja de ruta transparente sin costes ocultos.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Interactive Form Card -->
+      <div class="lg:col-span-7 bg-white rounded-3xl border border-slate-100 p-6 sm:p-8 shadow-xl relative">
+        <form id="contact-form" class="space-y-6">
+          <!-- Honeypot (campo trampa invisible para bots) -->
+          <div class="hidden animate-none pointer-events-none" aria-hidden="true">
+            <label for="contact-website">Website (no rellenar)</label>
+            <input type="text" id="contact-website" name="website" tabindex="-1" autocomplete="off" />
+          </div>
+          
+          <!-- Name and Phone fields (row) -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="flex flex-col gap-1.5">
+              <label for="contact-name" class="text-xs font-bold text-slate-700">Nombre completo *</label>
+              <input
+                type="text"
+                id="contact-name"
+                name="name"
+                required
+                placeholder="Ej. Juan Pérez"
+                class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-500/10 transition-all font-sans placeholder-slate-400"
+              />
+            </div>
+            <div class="flex flex-col gap-1.5">
+              <label for="contact-phone" class="text-xs font-bold text-slate-700">Teléfono (Opcional)</label>
+              <input
+                type="tel"
+                id="contact-phone"
+                name="phone"
+                placeholder="Ej. 600 000 000"
+                class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-500/10 transition-all font-sans placeholder-slate-400"
+              />
+            </div>
+          </div>
+
+          <!-- Email address -->
+          <div class="flex flex-col gap-1.5">
+            <label for="contact-email" class="text-xs font-bold text-slate-700">Dirección de correo *</label>
+            <input
+              type="email"
+              id="contact-email"
+              name="email"
+              required
+              placeholder="Ej. juan@empresa.com"
+              class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-500/10 transition-all font-sans placeholder-slate-400"
+            />
+          </div>
+
+          <!-- Project type radio-buttons stylized as badge-pills -->
+          <div class="flex flex-col gap-2">
+            <span class="text-xs font-bold text-slate-700">¿Qué tipo de proyecto es?</span>
+            <div class="flex flex-wrap gap-2.5 pt-1">
+              <label class="cursor-pointer">
+                <input type="radio" name="project_type" value="landing" class="peer sr-only" checked />
+                <span class="inline-flex px-3.5 py-2 rounded-full text-xs font-semibold border border-slate-200 bg-white text-slate-600 peer-checked:bg-blue-50 peer-checked:text-blue-700 peer-checked:border-blue-600 transition-all shadow-sm">
+                  Landing / Oferta 149€
+                </span>
+              </label>
+              <label class="cursor-pointer">
+                <input type="radio" name="project_type" value="corporativa" class="peer sr-only" />
+                <span class="inline-flex px-3.5 py-2 rounded-full text-xs font-semibold border border-slate-200 bg-white text-slate-600 peer-checked:bg-blue-50 peer-checked:text-blue-700 peer-checked:border-blue-600 transition-all shadow-sm">
+                  Corporativa 299€
+                </span>
+              </label>
+              <label class="cursor-pointer">
+                <input type="radio" name="project_type" value="tienda" class="peer sr-only" />
+                <span class="inline-flex px-3.5 py-2 rounded-full text-xs font-semibold border border-slate-200 bg-white text-slate-600 peer-checked:bg-blue-50 peer-checked:text-blue-700 peer-checked:border-blue-600 transition-all shadow-sm">
+                  Tienda Online 599€
+                </span>
+              </label>
+              <label class="cursor-pointer">
+                <input type="radio" name="project_type" value="otro" class="peer sr-only" />
+                <span class="inline-flex px-3.5 py-2 rounded-full text-xs font-semibold border border-slate-200 bg-white text-slate-600 peer-checked:bg-blue-50 peer-checked:text-blue-700 peer-checked:border-blue-600 transition-all shadow-sm">
+                  Otro / Consultoría
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Project Briefing description message -->
+          <div class="flex flex-col gap-1.5">
+            <label for="contact-message" class="text-xs font-bold text-slate-700">Cuéntanos un poco sobre tu idea *</label>
+            <textarea
+              id="contact-message"
+              name="message"
+              required
+              rows="4"
+              placeholder="Ej. Necesito una web corporativa para mi clínica de fisioterapia con sistema de reserva..."
+              class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-500/10 transition-all font-sans placeholder-slate-400 resize-y"
+            ></textarea>
+          </div>
+
+          <!-- GDPR consent check -->
+          <div class="flex items-start gap-3">
+            <input
+              type="checkbox"
+              id="contact-gdpr"
+              name="gdpr"
+              required
+              class="mt-1 w-4 h-4 text-blue-600 border-slate-300 rounded focus:ring-blue-500/20"
+            />
+            <label for="contact-gdpr" class="text-[11px] text-slate-500 leading-normal select-none">
+              Acepto la política de privacidad. Consiento que Ruvedia almacene temporalmente mis datos para responder a mi solicitud de presupuesto conforme al RGPD. *
+            </label>
+          </div>
+
+          <!-- Cloudflare Turnstile Widget (usando clave de test oficial que siempre pasa) -->
+          <div class="flex justify-center py-2">
+            <div class="cf-turnstile" data-sitekey="1x00000000000000000000AA" data-theme="light"></div>
+          </div>
+
+          <!-- Script asíncrono para cargar la API de Cloudflare Turnstile -->
+          <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
+          <!-- Submit Button -->
+          <button
+            type="submit"
+            id="contact-submit-btn"
+            class="w-full py-4 rounded-xl font-bold text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 shadow-md hover:shadow-lg shadow-blue-500/10 hover:shadow-blue-500/20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+          >
+            Enviar Solicitud
+          </button>
+        </form>
+
+        <!-- Dynamic Success Feedback Card Overlay (Initially hidden) -->
+        <div
+          id="contact-success-card"
+          class="absolute inset-0 bg-white rounded-3xl p-8 flex flex-col items-center justify-center text-center space-y-6 opacity-0 pointer-events-none transition-all duration-500 z-20"
+        >
+          <!-- Animated success check icon -->
+          <div class="w-16 h-16 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center border border-emerald-100 shadow-sm" aria-hidden="true">
+            <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-xl font-extrabold text-slate-900 mb-2">¡Mensaje enviado con éxito!</h3>
+            <p class="text-xs text-slate-500 leading-relaxed max-w-sm">
+              Gracias por ponerte en contacto. Nos pondremos en marcha inmediatamente y te enviaremos una propuesta formal en tu email en un plazo máximo de 72 horas laborables.
+            </p>
+          </div>
+          <!-- Go Back/Reset Form button -->
+          <button
+            id="contact-success-close-btn"
+            class="px-5 py-2.5 bg-slate-50 border border-slate-200 hover:bg-slate-100 hover:text-slate-950 text-xs font-bold text-slate-600 rounded-xl transition-all"
+          >
+            Enviar otro mensaje
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Inline script for contact form client success feedback and API submission -->
+<script is:inline>
+  (function() {
+    const form = document.getElementById("contact-form");
+    const successCard = document.getElementById("contact-success-card");
+    const closeBtn = document.getElementById("contact-success-close-btn");
+    const submitBtn = document.getElementById("contact-submit-btn");
+
+    if (form && successCard && closeBtn && submitBtn) {
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        
+        // Deshabilitar botón durante el envío
+        const originalText = submitBtn.textContent;
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Enviando...";
+
+        // Limpiar errores previos si los hubiera
+        const existingErrors = form.querySelectorAll(".field-error-message");
+        existingErrors.forEach(el => el.remove());
+
+        // Obtener datos del formulario
+        const formData = new FormData(form);
+        const data = {
+          name: formData.get("name"),
+          phone: formData.get("phone") || "",
+          email: formData.get("email"),
+          project_type: formData.get("project_type"),
+          message: formData.get("message"),
+          gdpr: formData.get("gdpr") === "on" || formData.get("gdpr") === "true" || form.querySelector("#contact-gdpr").checked,
+          // Campos de seguridad avanzada
+          website: formData.get("website") || "",
+          turnstile_token: formData.get("cf-turnstile-response") || "",
+        };
+
+        try {
+          const response = await fetch("/api/contacto", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          });
+
+          const result = await response.json();
+
+          if (response.ok && result.success) {
+            // Mostrar tarjeta de éxito
+            successCard.classList.remove("opacity-0", "pointer-events-none");
+            successCard.classList.add("opacity-100");
+          } else {
+            // Reiniciar el widget de Turnstile para permitir otro intento
+            if (window.turnstile) {
+              window.turnstile.reset();
+            }
+
+            // Mostrar mensaje de error general o específicos
+            if (result.details) {
+              // Si Zod devolvió errores detallados por campo
+              Object.keys(result.details).forEach(key => {
+                if (key === "_errors") return;
+                const fieldErrors = result.details[key]._errors;
+                if (fieldErrors && fieldErrors.length > 0) {
+                  const inputEl = form.querySelector(`[name="${key}"]`) || form.querySelector(`#contact-${key}`);
+                  if (inputEl) {
+                    const errorEl = document.createElement("p");
+                    errorEl.className = "text-[10px] text-red-500 font-semibold mt-1 field-error-message";
+                    errorEl.textContent = fieldErrors[0];
+                    // Si es un radio, ponerlo al final del contenedor padre
+                    if (key === "project_type") {
+                      inputEl.closest(".flex-col").appendChild(errorEl);
+                    } else {
+                      inputEl.parentElement.appendChild(errorEl);
+                    }
+                  }
+                }
+              });
+            } else {
+              alert(result.error || "Ocurrió un error al enviar el formulario.");
+            }
+          }
+        } catch (err) {
+          console.error("Error en el envío:", err);
+          alert("Error de conexión. Inténtalo de nuevo más tarde.");
+          if (window.turnstile) {
+            window.turnstile.reset();
+          }
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
+        }
+      });
+
+      closeBtn.addEventListener("click", () => {
+        // Reset form inputs
+        form.reset();
+        
+        // Reiniciar Turnstile
+        if (window.turnstile) {
+          window.turnstile.reset();
+        }
+        
+        // Limpiar errores
+        const existingErrors = form.querySelectorAll(".field-error-message");
+        existingErrors.forEach(el => el.remove());
+
+        // Ocultar tarjeta de éxito
+        successCard.classList.remove("opacity-100");
+        successCard.classList.add("opacity-0", "pointer-events-none");
+      });
+    }
+  })();
+</script>

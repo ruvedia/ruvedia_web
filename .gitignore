@@ -1,0 +1,23 @@
+# build and tool outputs
+dist/
+.astro/
+.wrangler/
+
+# dependencies
+node_modules/
+
+# local env files
+.env
+.env.production
+.env.development
+.env.local
+.env.*.local
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# system files
+.DS_Store

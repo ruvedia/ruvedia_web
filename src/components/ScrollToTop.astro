@@ -1,0 +1,57 @@
+---
+---
+<!-- Botón para subir arriba (scroll to top) fijo en la esquina inferior derecha -->
+<button
+  id="scroll-to-top"
+  class="fixed bottom-36 right-6 z-[100] inline-flex items-center justify-center w-11 h-11 rounded-full text-white bg-blue-600 border border-blue-600 shadow-lg hover:bg-white hover:text-blue-600 hover:scale-110 transition-all duration-300 translate-y-16 opacity-0 pointer-events-none focus:outline-none"
+  aria-label="Subir al inicio de la página"
+>
+  <svg
+    class="w-5 h-5"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    stroke-width="2.5"
+  >
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+  </svg>
+</button>
+
+<script>
+  function initScrollToTop() {
+    const scrollTopBtn = document.getElementById("scroll-to-top");
+    if (!scrollTopBtn) return;
+
+    const toggleVisibility = () => {
+      const scrollPosition = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop;
+      if (scrollPosition > 300) {
+        scrollTopBtn.classList.remove("translate-y-16", "opacity-0", "pointer-events-none");
+        scrollTopBtn.classList.add("translate-y-0", "opacity-100");
+      } else {
+        scrollTopBtn.classList.add("translate-y-16", "opacity-0", "pointer-events-none");
+        scrollTopBtn.classList.remove("translate-y-0", "opacity-100");
+      }
+    };
+
+    // Remove existing event listener if any to prevent duplicates
+    window.removeEventListener("scroll", toggleVisibility);
+    window.addEventListener("scroll", toggleVisibility);
+
+    scrollTopBtn.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    });
+  }
+
+  // Registrar eventos de forma segura previniendo condiciones de carrera
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initScrollToTop);
+  } else {
+    initScrollToTop();
+  }
+
+  // Ejecutar tras navegación de Astro View Transitions si estuviera activo
+  document.addEventListener("astro:page-load", initScrollToTop);
+</script>

@@ -1,0 +1,54 @@
+---
+// Importa los estilos globales del proyecto (incluye la configuración de Tailwind CSS)
+import '../styles/global.css';
+// Importa el componente de cabecera (Header) para que aparezca en todas las páginas
+import Header from '../components/Header.astro';
+// Importa el componente de pie de página (Footer)
+import Footer from '../components/Footer.astro';
+// Importa el componente de aceptación de cookies
+import CookieBanner from '../components/CookieBanner.astro';
+// Importa el widget de contacto flotante
+import FloatingContact from '../components/FloatingContact.astro';
+// Importa el botón de subir arriba
+import ScrollToTop from '../components/ScrollToTop.astro';
+
+// Define la interfaz de TypeScript para las propiedades que puede recibir este componente Layout
+interface Props {
+	// Declaración opcional de la propiedad 'title' de tipo texto
+	title?: string;
+}
+
+// Desestructura las propiedades recibidas en Astro.props asignando un valor por defecto ("Ruvedia")
+const { title = "Ruvedia" } = Astro.props;
+---
+
+<!-- Declara que este documento sigue el estándar HTML5 -->
+<!DOCTYPE html>
+<!-- Define que el idioma principal del documento es el español -->
+<html lang="es">
+	<head>
+		<!-- Establece la codificación de caracteres universal UTF-8 para evitar problemas de acentos -->
+		<meta charset="UTF-8" />
+		<!-- Ajusta el ancho de pantalla al dispositivo para la correcta visualización en móviles (diseño responsivo) -->
+		<meta name="viewport" content="width=device-width" />
+		<!-- Enlaza el icono que se mostrará en la pestaña del navegador (favicon) -->
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<!-- Define el título dinámico que tendrá la pestaña del navegador -->
+		<title>{title}</title>
+	</head>
+	<!-- Cuerpo de la página con fondo blanco, texto oscuro y tipografía sans-serif predeterminada -->
+	<body class="bg-white text-slate-950 font-sans">
+		<!-- Renderiza el menú de navegación (Header) en todas las páginas de forma automática -->
+		<Header />
+		<!-- Espacio reservado para inyectar dinámicamente el contenido de las páginas que usen este layout -->
+		<slot />
+		<!-- Renderiza el pie de página (Footer) de forma global en todas las páginas -->
+		<Footer />
+		<!-- Renderiza el banner de cookies de forma global -->
+		<CookieBanner />
+		<!-- Renderiza el widget de contacto flotante de forma global -->
+		<FloatingContact />
+		<!-- Renderiza el botón de subir arriba de forma global -->
+		<ScrollToTop />
+	</body>
+</html>

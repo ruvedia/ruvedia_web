@@ -1,0 +1,533 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+// FAQs de precios
+const faqsPrecios = [
+  {
+    pregunta: "¿Hay mensualidades obligatorias?",
+    respuesta:
+      "No. El desarrollo de la página web es un pago único. Una vez entregada la web, es de tu absoluta propiedad y no tienes obligación de pagar ninguna mensualidad para mantenerla activa.",
+  },
+  {
+    pregunta: "¿El hosting y el dominio están incluidos?",
+    respuesta:
+      "No. El alojamiento web (hosting) y el dominio oficial no están incluidos en el precio del desarrollo. De esta manera, tú eres el dueño absoluto de tu página desde el primer día. Nosotros te asesoramos y ayudamos a contratarlos a tu nombre sin costes adicionales.",
+  },
+  {
+    pregunta: "¿Qué ocurre si necesito actualizar contenido en el futuro?",
+    respuesta:
+      "Todas nuestras webs se entregan preparadas para ser autogestionables de forma sencilla. Te proporcionamos una formación sencilla para que aprendas a hacer cambios básicos de textos o imágenes tú mismo. Si prefieres delegarlo, ofrecemos planes de soporte mensual.",
+  },
+  {
+    pregunta:
+      "¿Puedo empezar con una Landing y pasar a Web Corporativa después?",
+    respuesta:
+      "Por supuesto. Al programar la web de forma limpia y modular, podemos ampliar tu sitio web en cualquier momento añadiendo nuevas secciones, blog o incluso tienda online sin tener que rehacer el proyecto desde cero.",
+  },
+];
+---
+
+<Layout title="Precios y Planes Web Transparentes | Ruvedia">
+  <!-- Hero Section -->
+  <section class="relative pt-36 pb-20 overflow-hidden bg-slate-50">
+    <div
+      class="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none z-0"
+      aria-hidden="true"
+    >
+    </div>
+
+    <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
+      <span
+        class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-blue-100/60 text-blue-800 border border-blue-200 mb-6 shadow-sm font-mono uppercase"
+      >
+        TARIFAS TRANSPARENTES
+      </span>
+      <h1
+        class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-950 mb-6 leading-tight max-w-4xl mx-auto"
+      >
+        Planes y precios adaptados <span
+          class="bg-gradient-to-r from-blue-600 via-indigo-600 to-indigo-500 bg-clip-text text-transparent"
+          >a tu escala de negocio</span
+        >
+      </h1>
+      <p
+        class="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto font-sans"
+      >
+        Sin cuotas sorpresa ni comisiones. Diseñamos y desarrollamos tu
+        escaparate digital con un presupuesto cerrado bajo contrato y plazos de
+        entrega garantizados.
+      </p>
+    </div>
+  </section>
+
+  <!-- Pricing Cards Grid -->
+  <section class="py-16 bg-white relative">
+    <div class="max-w-7xl mx-auto px-6">
+      <!-- Option Selector Toggle: One-off Payment Info -->
+      <div class="flex justify-center mb-16">
+        <div
+          class="inline-flex items-center gap-2 bg-slate-100 p-1.5 rounded-2xl border border-slate-200/80"
+        >
+          <span
+            class="px-4 py-2 rounded-xl bg-white text-slate-950 font-bold text-xs shadow-sm"
+            >Pago Único de Desarrollo</span
+          >
+          <span class="px-4 py-2 text-slate-500 font-semibold text-xs"
+            >Hosting y Dominio No Incluidos</span
+          >
+        </div>
+      </div>
+
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch mb-24"
+      >
+        <!-- PLAN 1: Landing Page -->
+        <div
+          class="bg-slate-50/50 border border-slate-200/60 rounded-3xl p-8 hover:shadow-2xl hover:bg-white hover:border-blue-500/10 transition-all duration-300 flex flex-col justify-between group"
+        >
+          <div>
+            <div class="mb-6">
+              <span
+                class="text-xs font-bold text-slate-400 uppercase tracking-widest font-mono block mb-2"
+                >CAMPANAS & PROMO</span
+              >
+              <h3 class="text-xl font-extrabold text-slate-950 mb-3">
+                Landing Page
+              </h3>
+              <div class="flex items-baseline gap-2 text-slate-950 mb-4">
+                <span class="text-xs font-semibold text-slate-400">desde</span>
+                <span class="text-lg font-medium line-through text-slate-300"
+                  >249€</span
+                >
+                <span class="text-4xl font-extrabold tracking-tight">149€</span>
+                <span class="text-xs font-semibold text-slate-400 font-mono"
+                  >/único</span
+                >
+              </div>
+              <p class="text-sm text-slate-600 leading-relaxed font-sans">
+                Pensado para profesionales independientes y pequeños comercios
+                que buscan darse a conocer en internet rápido y con una imagen
+                profesional.
+              </p>
+            </div>
+
+            <div class="h-px bg-slate-100 my-6"></div>
+
+            <ul class="space-y-4 mb-8">
+              <li
+                class="flex items-start gap-3 text-sm text-slate-700 font-sans"
+              >
+                <span class="text-blue-500 font-bold mt-0.5">✓</span>
+                <span>Una landing page a medida y profesional</span>
+              </li>
+              <li
+                class="flex items-start gap-3 text-sm text-slate-700 font-sans"
+              >
+                <span class="text-blue-500 font-bold mt-0.5">✓</span>
+                <span>Formulario de contacto</span>
+              </li>
+              <li
+                class="flex items-start gap-3 text-sm text-slate-700 font-sans"
+              >
+                <span class="text-blue-500 font-bold mt-0.5">✓</span>
+                <span>Diseño responsive</span>
+              </li>
+              <li
+                class="flex items-start gap-3 text-sm text-slate-700 font-sans"
+              >
+                <span class="text-blue-500 font-bold mt-0.5">✓</span>
+                <span>Dominio y hosting (no incluidos)</span>
+              </li>
+              <li
+                class="flex items-start gap-3 text-sm text-slate-700 font-sans"
+              >
+                <span class="text-blue-500 font-bold mt-0.5">✓</span>
+                <span>Mantenimiento básico</span>
+              </li>
+              <li
+                class="flex items-start gap-3 text-sm text-slate-700 font-sans"
+              >
+                <span class="text-blue-500 font-bold mt-0.5">✓</span>
+                <span>Soporte por email</span>
+              </li>
+              <li
+                class="flex items-start gap-3 text-sm text-slate-700 font-sans"
+              >
+                <span class="text-blue-500 font-bold mt-0.5">✓</span>
+                <span>Portal de cambios</span>
+              </li>
+            </ul>
+          </div>
+
+          <a
+            href="/contacto"
+            id="pricing-detail-landing"
+            class="w-full inline-flex items-center justify-center py-3.5 rounded-full text-xs font-bold text-slate-800 bg-slate-100 hover:bg-blue-600 hover:text-white hover:shadow-lg hover:shadow-blue-500/10 transition-all duration-300"
+          >
+            Seleccionar Landing Page
+          </a>
+        </div>
+
+        <!-- PLAN 2: Web Corporativa (Recomendado) -->
+        <div
+          class="bg-white border-2 border-blue-600 rounded-3xl p-8 shadow-xl shadow-blue-500/5 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-300 flex flex-col justify-between relative group"
+        >
+          <div
+            class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-[9px] font-extrabold uppercase tracking-widest px-3.5 py-1.5 rounded-full shadow-md font-mono"
+          >
+            El Más Popular
+          </div>
+
+          <div>
+            <div class="mb-6 mt-2">
+              <span
+                class="text-xs font-bold text-blue-600 uppercase tracking-widest font-mono block mb-2"
+                >AUTORIDAD & NEGOCIO</span
+              >
+              <h3 class="text-xl font-extrabold text-slate-950 mb-3">
+                Web Corporativa
+              </h3>
+              <div class="flex items-baseline gap-2 text-slate-950 mb-4">
+                <span class="text-xs font-semibold text-slate-400">desde</span>
+                <span class="text-lg font-medium line-through text-slate-300"
+                  >499€</span
+                >
+                <span class="text-4xl font-extrabold tracking-tight">299€</span>
+                <span class="text-xs font-semibold text-slate-400 font-mono"
+                  >/único</span
+                >
+              </div>
+              <p class="text-sm text-slate-600 leading-relaxed font-sans">
+                Pensado para empresas en crecimiento que necesitan un sitio web
+                completo, estructurado y de alta calidad.
+              </p>
+            </div>
+
+            <div class="h-px bg-slate-100 my-6"></div>
+
+            <ul class="space-y-4 mb-8">
+              <li
+                class="flex items-start gap-3 text-sm text-slate-700 font-sans"
+              >
+                <span class="text-blue-500 font-bold mt-0.5">✓</span>
+                <span
+                  >Web corporativa hasta 5 páginas <span
+                    class="text-slate-400 text-xs"
+                    >(Inicio + Servicios + Proyectos + Contacto + Sobre
+                    nosotros)</span
+                  ></span
+                >
+              </li>
+              <li
+                class="flex items-start gap-3 text-sm text-slate-700 font-sans"
+              >
+                <span class="text-blue-500 font-bold mt-0.5">✓</span>
+                <span>Diseño personalizado</span>
+              </li>
+              <li
+                class="flex items-start gap-3 text-sm text-slate-700 font-sans"
+              >
+                <span class="text-blue-500 font-bold mt-0.5">✓</span>
+                <span>Dominio y hosting (no incluidos)</span>
+              </li>
+              <li
+                class="flex items-start gap-3 text-sm text-slate-700 font-sans"
+              >
+                <span class="text-blue-500 font-bold mt-0.5">✓</span>
+                <span>Soporte prioritario</span>
+              </li>
+              <li
+                class="flex items-start gap-3 text-sm text-slate-700 font-sans"
+              >
+                <span class="text-blue-500 font-bold mt-0.5">✓</span>
+                <span>Portal de cambios</span>
+              </li>
+            </ul>
+          </div>
+
+          <a
+            href="/contacto"
+            id="pricing-detail-corporativa"
+            class="w-full inline-flex items-center justify-center py-3.5 rounded-full text-xs font-bold text-white bg-blue-600 hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-500/20 transition-all duration-300"
+          >
+            Seleccionar Web Corporativa
+          </a>
+        </div>
+
+        <!-- PLAN 3: Tienda Online -->
+        <div
+          class="bg-slate-50/50 border border-slate-200/60 rounded-3xl p-8 hover:shadow-2xl hover:bg-white hover:border-blue-500/10 transition-all duration-300 flex flex-col justify-between group"
+        >
+          <div>
+            <div class="mb-6">
+              <span
+                class="text-xs font-bold text-slate-400 uppercase tracking-widest font-mono block mb-2"
+                >VENTAS DIGITALES</span
+              >
+              <h3 class="text-xl font-extrabold text-slate-950 mb-3">
+                Tienda Online
+              </h3>
+              <div class="flex items-baseline gap-2 text-slate-950 mb-4">
+                <span class="text-xs font-semibold text-slate-400">desde</span>
+                <span class="text-lg font-medium line-through text-slate-300"
+                  >799€</span
+                >
+                <span class="text-4xl font-extrabold tracking-tight">599€</span>
+                <span class="text-xs font-semibold text-slate-400 font-mono"
+                  >/único</span
+                >
+              </div>
+              <p class="text-sm text-slate-600 leading-relaxed font-sans">
+                Pensado para comercios que buscan vender productos físicos,
+                gestionar reservas de pago o distribuir descargas digitales de
+                manera sencilla y segura.
+              </p>
+            </div>
+
+            <div class="h-px bg-slate-100 my-6"></div>
+
+            <ul class="space-y-4 mb-8">
+              <li
+                class="flex items-start gap-3 text-sm text-slate-700 font-sans"
+              >
+                <span class="text-blue-500 font-bold mt-0.5">✓</span>
+                <span class="font-bold text-slate-900"
+                  >Todo lo del plan Web Corporativa</span
+                >
+              </li>
+              <li
+                class="flex items-start gap-3 text-sm text-slate-700 font-sans"
+              >
+                <span class="text-blue-500 font-bold mt-0.5">✓</span>
+                <span>Pasarela de pagos segura (con Shopify)</span>
+              </li>
+              <li
+                class="flex items-start gap-3 text-sm text-slate-700 font-sans"
+              >
+                <span class="text-blue-500 font-bold mt-0.5">✓</span>
+                <span>Catálogo de productos auto-gestionable</span>
+              </li>
+              <li
+                class="flex items-start gap-3 text-sm text-slate-700 font-sans"
+              >
+                <span class="text-blue-500 font-bold mt-0.5">✓</span>
+                <span>Configuración de tarifas de envío e impuestos</span>
+              </li>
+              <li
+                class="flex items-start gap-3 text-sm text-slate-700 font-sans"
+              >
+                <span class="text-blue-500 font-bold mt-0.5">✓</span>
+                <span>Checkout optimizado para móviles</span>
+              </li>
+            </ul>
+          </div>
+
+          <a
+            href="/contacto"
+            id="pricing-detail-tienda"
+            class="w-full inline-flex items-center justify-center py-3.5 rounded-full text-xs font-bold text-slate-800 bg-slate-100 hover:bg-blue-600 hover:text-white hover:shadow-lg hover:shadow-blue-500/10 transition-all duration-300"
+          >
+            Seleccionar Tienda Online
+          </a>
+        </div>
+      </div>
+
+      <!-- Maintenance Plans Section -->
+      <div class="my-24 border-t border-slate-100 pt-20">
+        <div class="text-center space-y-4 mb-16">
+          <span
+            class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-indigo-50 text-indigo-700 border border-indigo-100 shadow-sm font-mono uppercase"
+          >
+            SOPORTE Y TRANQUILIDAD
+          </span>
+          <h2 class="text-3xl font-extrabold text-slate-950">
+            Planes de Mantenimiento Mensual
+          </h2>
+          <p
+            class="text-sm sm:text-base text-slate-600 max-w-2xl mx-auto font-sans"
+          >
+            Despreocúpate de la parte técnica. Mantén tu web rápida, segura y
+            actualizada con nuestras opciones de soporte mensual (sin
+            permanencia).
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+          <!-- Mantenimiento Básico -->
+          <div
+            class="bg-slate-50/50 border border-slate-200/60 rounded-3xl p-6 hover:shadow-xl hover:bg-white hover:border-indigo-500/10 transition-all duration-300 flex flex-col justify-between group"
+          >
+            <div>
+              <div class="mb-6">
+                <h3 class="text-lg font-bold text-slate-950 mb-2">
+                  Mantenimiento Básico
+                </h3>
+                <div class="flex items-baseline gap-1 text-slate-950">
+                  <span class="text-3xl font-extrabold tracking-tight">20€</span
+                  >
+                  <span class="text-xs font-semibold text-slate-400 font-mono"
+                    >/mes</span
+                  >
+                </div>
+              </div>
+              <ul class="space-y-3 text-sm text-slate-600 mb-6 font-sans">
+                <li class="flex items-start gap-2">
+                  <span class="text-indigo-500 font-bold">✓</span>
+                  <span>Gestión del hosting y dominio</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-indigo-500 font-bold">✓</span>
+                  <span>Soporte de seguridad</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-indigo-500 font-bold">✓</span>
+                  <span>Soporte web básico</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-indigo-500 font-bold">✓</span>
+                  <span>Cambios de contenidos mensuales</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Mantenimiento Estándar -->
+          <div
+            class="bg-slate-50/50 border border-slate-200/60 rounded-3xl p-6 hover:shadow-xl hover:bg-white hover:border-indigo-500/10 transition-all duration-300 flex flex-col justify-between group"
+          >
+            <div>
+              <div class="mb-6">
+                <h3 class="text-lg font-bold text-slate-950 mb-2">
+                  Mantenimiento Estándar
+                </h3>
+                <div class="flex items-baseline gap-1 text-slate-950">
+                  <span class="text-3xl font-extrabold tracking-tight">30€</span
+                  >
+                  <span class="text-xs font-semibold text-slate-400 font-mono"
+                    >/mes</span
+                  >
+                </div>
+              </div>
+              <ul class="space-y-3 text-sm text-slate-600 mb-6 font-sans">
+                <li class="flex items-start gap-2">
+                  <span class="text-indigo-500 font-bold">✓</span>
+                  <span>Gestión del hosting y dominio</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-indigo-500 font-bold">✓</span>
+                  <span>Soporte de seguridad</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-indigo-500 font-bold">✓</span>
+                  <span>Soporte web prioritario</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-indigo-500 font-bold">✓</span>
+                  <span>Cambios de contenidos mensuales</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Mantenimiento Avanzado -->
+          <div
+            class="bg-slate-50/50 border border-slate-200/60 rounded-3xl p-6 hover:shadow-xl hover:bg-white hover:border-indigo-500/10 transition-all duration-300 flex flex-col justify-between group"
+          >
+            <div>
+              <div class="mb-6">
+                <h3 class="text-lg font-bold text-slate-950 mb-2">
+                  Mantenimiento Avanzado
+                </h3>
+                <div class="flex items-baseline gap-1 text-slate-950">
+                  <span class="text-3xl font-extrabold tracking-tight">65€</span
+                  >
+                  <span class="text-xs font-semibold text-slate-400 font-mono"
+                    >/mes</span
+                  >
+                </div>
+              </div>
+              <ul class="space-y-3 text-sm text-slate-600 mb-6 font-sans">
+                <li class="flex items-start gap-2">
+                  <span class="text-indigo-500 font-bold">✓</span>
+                  <span>Gestión de hosting y dominio</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-indigo-500 font-bold">✓</span>
+                  <span>Soporte de seguridad avanzado</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-indigo-500 font-bold">✓</span>
+                  <span>Soporte técnico preferente</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-indigo-500 font-bold">✓</span>
+                  <span>Cambios de contenidos mensuales</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Section specialized in Pricing -->
+      <div class="max-w-4xl mx-auto space-y-12">
+        <div class="text-center space-y-4">
+          <h2 class="text-3xl font-extrabold text-slate-950">
+            Preguntas frecuentes sobre tarifas
+          </h2>
+          <p class="text-sm sm:text-base text-slate-600 font-sans">
+            Aclaramos todas tus dudas sobre nuestro sistema de pagos y
+            condiciones.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {
+            faqsPrecios.map((faq) => (
+              <div class="bg-slate-50/50 border border-slate-200/50 rounded-2xl p-6 hover:bg-white hover:shadow-md transition-all duration-300">
+                <h4 class="text-base font-extrabold text-slate-950 mb-3 font-sans">
+                  {faq.pregunta}
+                </h4>
+                <p class="text-sm text-slate-600 leading-relaxed font-sans">
+                  {faq.respuesta}
+                </p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA Section -->
+  <section
+    class="py-24 bg-slate-950 text-white relative overflow-hidden border-t border-slate-900"
+  >
+    <div
+      class="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"
+    >
+    </div>
+
+    <div class="relative z-10 max-w-4xl mx-auto px-6 text-center space-y-8">
+      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
+        ¿Tienes un requerimiento especial?
+      </h2>
+      <p
+        class="text-sm text-slate-400 leading-relaxed max-w-xl mx-auto font-sans"
+      >
+        Si tu proyecto requiere integraciones personalizadas con CRMs, sistemas
+        de reservas complejos o desarrollos a medida de gran escala, cuéntanos
+        tu caso y diseñamos un presupuesto personalizado.
+      </p>
+      <div>
+        <a
+          href="/contacto"
+          id="precios-final-cta-btn"
+          class="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-xs font-bold text-slate-950 bg-white hover:bg-slate-100 hover:shadow-xl hover:shadow-white/5 hover:scale-110 transition-all duration-300"
+        >
+          Solicitar Presupuesto a Medida
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

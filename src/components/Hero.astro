@@ -1,0 +1,242 @@
+---
+// Beneficios clave del servicio para evitar repetición en el HTML
+const beneficios = [
+  "Velocidad de carga ultra rápida (Optimización móvil)",
+  "Diseño web premium adaptado a la identidad de tu marca",
+  "Estructura de ventas pensada para captar clientes",
+];
+---
+
+<section
+  class="relative min-h-[90vh] flex items-center pt-28 pb-16 overflow-hidden bg-white"
+>
+  <!-- Subtle decorative grid background and background image (z-0 sits on top of bg-white but behind content) -->
+  <div
+    class="absolute inset-0 bg-[linear-gradient(to_right,#f1f5f9_1px,transparent_1px),linear-gradient(to_bottom,#f1f5f9_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none z-0"
+    aria-hidden="true"
+  >
+  </div>
+  <div
+    class="absolute inset-0 bg-cover bg-center opacity-[0.18] pointer-events-none z-0"
+    style="background-image: url('/hero-bg.png');"
+    aria-hidden="true"
+  >
+  </div>
+  <!-- White fade overlay to ensure high contrast/legibility for text -->
+  <div
+    class="absolute inset-0 bg-gradient-to-b from-white/40 via-white/85 to-white pointer-events-none z-0"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div
+    class="relative z-10 max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center"
+  >
+    <!-- Left Column: Copy & Actions -->
+    <div class="lg:col-span-7 flex flex-col items-start text-left z-10">
+      <!-- Top Badge -->
+      <div
+        class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100 mb-6 shadow-sm"
+      >
+        <span
+          class="w-2 h-2 rounded-full bg-blue-600 animate-pulse"
+          aria-hidden="true"></span>
+        Diseño & Desarrollo Web a medida
+      </div>
+
+      <!-- Main Headline -->
+      <h1
+        class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-950 mb-6 leading-[1.1]"
+      >
+        Creamos páginas web <span
+          id="hero-typewriter"
+          class="bg-gradient-to-r from-blue-600 via-indigo-600 to-indigo-500 bg-clip-text text-transparent"
+          >extraordinarias</span
+        ><span
+          class="text-blue-600 font-normal animate-pulse"
+          id="hero-cursor"
+          aria-hidden="true">|</span
+        > <br />que venden
+      </h1>
+
+      <!-- Subheadline/Intro -->
+      <p
+        class="text-base sm:text-lg text-slate-600 mb-8 max-w-xl leading-relaxed"
+      >
+        Ayudamos a profesionales y empresas a destacar en internet. Diseñamos
+        sitios web a medida, rápidos, optimizados para SEO y enfocados en
+        convertir visitas en clientes reales.
+      </p>
+
+      <!-- Key Benefits list (Optimized loop to avoid HTML repetition) -->
+      <ul class="space-y-3.5 mb-8">
+        {
+          beneficios.map((beneficio) => (
+            <li class="flex items-center gap-3 text-slate-700 font-medium text-sm">
+              <div
+                class="w-5 h-5 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 shrink-0"
+                aria-hidden="true"
+              >
+                <svg
+                  class="w-3.5 h-3.5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="3"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+              </div>
+              {beneficio}
+            </li>
+          ))
+        }
+      </ul>
+
+      <!-- CTA Buttons -->
+      <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+        <a
+          href="/contacto"
+          id="hero-btn-presupuesto"
+          class="inline-flex items-center justify-center px-7 py-3.5 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30 transition-all duration-300 group focus:outline-none"
+        >
+          Pide tu presupuesto
+          <svg
+            class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2.5"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M9 5l7 7-7 7"></path>
+          </svg>
+        </a>
+        <a
+          href="#portafolio"
+          id="hero-btn-portafolio"
+          class="inline-flex items-center justify-center px-7 py-3.5 rounded-full text-sm font-semibold text-slate-700 bg-slate-50 border border-slate-200 hover:bg-slate-100 hover:text-slate-950 transition-all duration-300 focus:outline-none"
+        >
+          Ver portafolio
+        </a>
+      </div>
+
+      <!-- Quick Trust Indicators -->
+      <div
+        class="mt-12 pt-8 border-t border-slate-100 w-full grid grid-cols-3 gap-4"
+      >
+        <div>
+          <span class="block text-2xl font-extrabold text-slate-950">100%</span>
+          <span class="text-xs text-slate-500 font-medium">Diseño a Medida</span
+          >
+        </div>
+        <div>
+          <span class="block text-2xl font-extrabold text-slate-950"
+            >Google</span
+          >
+          <span class="text-xs text-slate-500 font-medium">Optimizado</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-extrabold text-slate-950"
+            >&lt; 1s</span
+          >
+          <span class="text-xs text-slate-500 font-medium">Carga Rápida</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column: Visual Mockup (CSS Browser Frame) -->
+    <div class="lg:col-span-5 relative w-full flex justify-center items-center">
+      <!-- Glow background behind mockup -->
+      <div
+        class="absolute w-72 h-72 rounded-full bg-blue-400/10 blur-[80px] -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        aria-hidden="true"
+      >
+      </div>
+
+      <!-- Custom Browser Frame -->
+      <div
+        class="relative w-full max-w-md bg-white rounded-2xl border border-slate-200 shadow-xl overflow-hidden group hover:border-blue-500/30 transition-all duration-300"
+      >
+        <!-- Browser Top Bar -->
+        <div
+          class="h-10 bg-slate-50 border-b border-slate-200/80 px-4 flex items-center justify-between"
+        >
+          <div class="flex items-center gap-1.5" aria-hidden="true">
+            <span class="w-3 h-3 rounded-full bg-rose-400/80"></span>
+            <span class="w-3 h-3 rounded-full bg-amber-400/80"></span>
+            <span class="w-3 h-3 rounded-full bg-emerald-400/80"></span>
+          </div>
+          <div
+            class="w-48 h-5 rounded bg-slate-200/60 flex items-center justify-center text-[9px] text-slate-400 select-none font-mono"
+          >
+            ruvedia.com/proyecto
+          </div>
+          <div class="w-4" aria-hidden="true"></div>
+        </div>
+
+        <!-- Browser Mockup Image Content -->
+        <div
+          class="relative aspect-[4/3] bg-slate-50 overflow-hidden flex items-center justify-center"
+        >
+          <img
+            src="/portfolio/hero_mockup_v7.png"
+            alt="Demostración interactiva de panel web premium y de alto rendimiento"
+            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  (function () {
+    const words = ["extraordinarias", "rápidas", "seguras", "rentables"];
+    let wordIdx = 0;
+    let charIdx = words[0].length;
+    let isDeleting = true; // Start by deleting since it is pre-typed
+    const typeSpeed = 100;
+    const eraseSpeed = 50;
+    const delayBetweenWords = 2500;
+
+    const target = document.getElementById("hero-typewriter");
+    if (!target) return;
+
+    function type() {
+      const currentWord = words[wordIdx];
+
+      if (isDeleting) {
+        target.textContent = currentWord.substring(0, charIdx);
+        charIdx--;
+      } else {
+        target.textContent = currentWord.substring(0, charIdx);
+        charIdx++;
+      }
+
+      let speed = isDeleting ? eraseSpeed : typeSpeed;
+
+      if (!isDeleting && charIdx > currentWord.length) {
+        isDeleting = true;
+        speed = delayBetweenWords;
+      } else if (isDeleting && charIdx < 0) {
+        isDeleting = false;
+        wordIdx = (wordIdx + 1) % words.length;
+        charIdx = 0;
+        speed = 500; // Pause before typing next word
+      }
+
+      setTimeout(type, speed);
+    }
+
+    // Start typing cycle after initial pause
+    setTimeout(type, delayBetweenWords);
+  })();
+</script>

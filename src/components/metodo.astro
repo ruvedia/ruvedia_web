@@ -1,0 +1,153 @@
+---
+// Array conteniendo los datos de las fases del proceso de 6 pasos con entregables detallados
+const pasos = [
+  {
+    numero: "01",
+    titulo: "Propuesta Comercial",
+    fase: "Aclaración de Propuesta",
+    descripcion: "Resolvemos cualquier duda o consulta que pueda surgir tras revisar y leer esta propuesta comercial para alinear expectativas.",
+    entregables: ["Aclaración de alcances", "Definición de plazos", "Resolución de dudas", "Firma de acuerdo inicial"],
+    iconColor: "text-blue-600 bg-blue-50 border-blue-100",
+    imagen: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    numero: "02",
+    titulo: "Envío de Material",
+    fase: "Material Básico",
+    descripcion: "Se recopila el material base: logotipo de la clínica, textos informativos de los tratamientos principales y fotografías de las instalaciones y personal.",
+    entregables: ["Logotipo corporativo", "Textos de tratamientos", "Fotografías de instalaciones", "Imágenes del personal"],
+    iconColor: "text-indigo-600 bg-indigo-50 border-indigo-100",
+    imagen: "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    numero: "03",
+    titulo: "Maquetación Web",
+    fase: "Maquetación Final",
+    descripcion: "Integramos todo el material en el diseño de la web, realizamos pruebas de velocidad de carga optimizada y lanzamos la demo privada de la web.",
+    entregables: ["Integración de contenidos", "Optimización de velocidad", "Lanzamiento de demo privada", "Configuración de formularios"],
+    iconColor: "text-violet-600 bg-violet-50 border-violet-100",
+    imagen: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    numero: "04",
+    titulo: "Revisión General",
+    fase: "Revisión de Maquetación",
+    descripcion: "Repasamos minuciosamente el diseño, la navegación interactiva y la usabilidad móvil. El cliente revisa la demo y otorga su visto bueno final.",
+    entregables: ["Revisión de diseño UI/UX", "Pruebas de enlaces y botones", "Correcciones de textos", "Aprobación y visto bueno"],
+    iconColor: "text-pink-600 bg-pink-50 border-pink-100",
+    imagen: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    numero: "05",
+    titulo: "Alta de Dominio",
+    fase: "Registro Oficial",
+    descripcion: "Solicitamos y gestionamos los datos pertinentes para registrar y dar de alta tu dominio oficial personalizado.",
+    entregables: ["Registro de dominio oficial", "Configuración de zona DNS", "Vinculación con hosting rápido", "Activación certificado SSL"],
+    iconColor: "text-amber-600 bg-amber-50 border-amber-100",
+    imagen: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    numero: "06",
+    titulo: "Lanzamiento Final",
+    fase: "Puesta en Marcha",
+    descripcion: "Una vez verificados e implementados todos los puntos anteriores con éxito, procedemos al lanzamiento público y definitivo de tu web terminada.",
+    entregables: ["Indexación inicial en Google", "Activación del sitio público", "Entrega de accesos completos", "Inicio de soporte continuo"],
+    iconColor: "text-emerald-600 bg-emerald-50 border-emerald-100",
+    imagen: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80"
+  }
+];
+---
+
+<section class="relative py-24 bg-slate-50/50 overflow-hidden border-t border-slate-100" id="metodo">
+  <!-- Decorative background details -->
+  <div class="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-blue-500/5 blur-[120px] pointer-events-none z-0"></div>
+  <div class="absolute top-0 left-0 w-96 h-96 rounded-full bg-indigo-500/5 blur-[120px] pointer-events-none z-0"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6">
+    
+    <!-- Section Header -->
+    <div class="text-center mx-auto max-w-3xl mb-20">
+      <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-blue-100/60 text-blue-800 border border-blue-200 mb-6 shadow-sm font-mono uppercase">
+        Hoja de Ruta
+      </span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-950 mb-6 leading-tight">
+        Proceso ágil estructurado en <span class="bg-gradient-to-r from-blue-600 via-indigo-600 to-indigo-500 bg-clip-text text-transparent">6 sencillos pasos</span>
+      </h2>
+      <p class="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto font-sans">
+        Con el fin de agilizar los tiempos y garantizar la máxima calidad, seguimos esta hoja de ruta transparente para lanzar tu proyecto web sin fricción.
+      </p>
+    </div>
+
+    <!-- Timeline Grid (3 columns for 6 steps) -->
+    <div class="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      
+      {pasos.map((paso, index) => (
+        <div class="relative flex flex-col items-start group">
+          
+          <!-- Step indicator and days badge -->
+          <div class="flex items-center justify-between w-full mb-6">
+            <!-- Glowing Step Number badge -->
+            <div class={`w-14 h-14 rounded-2xl flex items-center justify-center font-extrabold text-base border shadow-sm group-hover:scale-105 transition-all duration-300 ${paso.iconColor}`}>
+              {paso.numero}
+            </div>
+            
+            <!-- Phase tag -->
+            <div class="text-xs font-bold text-slate-500 bg-white border border-slate-200 px-3 py-1 rounded-lg shadow-sm font-mono">
+              {paso.fase}
+            </div>
+          </div>
+
+          <!-- Connecting line visual aid for mobile -->
+          {index < pasos.length - 1 && (
+            <div class="md:hidden w-px h-8 bg-dashed border-l border-dashed border-slate-300 ml-7 my-2"></div>
+          )}
+
+          <!-- Content Card block -->
+          <div class="bg-white border border-slate-200/60 rounded-3xl p-5 hover:shadow-2xl hover:shadow-slate-100 hover:border-blue-500/10 transition-all duration-300 flex-1 flex flex-col w-full">
+            
+            <!-- High Quality Photo Image -->
+            <div class="w-full h-40 rounded-xl overflow-hidden mb-5 bg-slate-50 border border-slate-100 shadow-inner relative">
+              <img src={paso.imagen} alt={paso.titulo} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+            </div>
+
+            <!-- Step Title -->
+            <h3 class="text-lg font-extrabold text-slate-950 mb-3 group-hover:text-blue-600 transition-colors">
+              {paso.titulo}
+            </h3>
+
+            <!-- Step Description -->
+            <p class="text-sm text-slate-500 leading-relaxed mb-5 font-sans">
+              {paso.descripcion}
+            </p>
+
+            <!-- Deliverables detail list -->
+            <div class="mt-auto pt-4 border-t border-slate-100 space-y-2">
+              <h4 class="text-xs font-bold text-slate-900 uppercase tracking-wider font-mono">Tareas clave:</h4>
+              <ul class="space-y-1.5">
+                {paso.entregables.map((item) => (
+                  <li class="text-xs text-slate-600 flex items-start gap-1.5 font-sans">
+                    <span class="text-blue-500 mt-0.5 font-bold">✓</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      ))}
+      
+    </div>
+
+    <!-- Bottom call-to-action note -->
+    <div class="mt-16 text-center">
+      <p class="text-sm text-slate-500 flex items-center justify-center gap-1.5 font-semibold font-sans">
+        <svg class="w-5 h-5 text-blue-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        Hoja de ruta ágil adaptada para un desarrollo profesional estructurado de principio a fin.
+      </p>
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,245 @@
+---
+
+---
+
+<header
+  class="fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b border-slate-100 bg-white shadow-sm shadow-slate-200/50"
+  id="main-header"
+>
+  <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-2 group focus:outline-none">
+      <div
+        class="relative w-9 h-9 rounded-lg bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center shadow-lg shadow-blue-500/20 group-hover:scale-105 transition-transform duration-300"
+      >
+        <span class="text-white font-extrabold text-lg select-none">R</span>
+        <div
+          class="absolute inset-0 rounded-lg bg-blue-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300"
+        >
+        </div>
+      </div>
+      <span
+        class="text-xl font-bold tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors duration-300"
+      >
+        Ruvedia<span class="text-blue-600">.com</span>
+      </span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-8">
+      <a
+        href="/"
+        class="text-sm font-medium text-slate-600 hover:text-slate-950 transition-colors duration-300 relative py-2 group"
+      >
+        Inicio
+        <span
+          class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"
+        ></span>
+      </a>
+      <a
+        href="/servicios"
+        class="text-sm font-medium text-slate-600 hover:text-slate-950 transition-colors duration-300 relative py-2 group"
+      >
+        Servicios
+        <span
+          class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"
+        ></span>
+      </a>
+      <a
+        href="/portfolio"
+        class="text-sm font-medium text-slate-600 hover:text-slate-950 transition-colors duration-300 relative py-2 group"
+      >
+        Portafolio
+        <span
+          class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"
+        ></span>
+      </a>
+      <a
+        href="/metodo"
+        class="text-sm font-medium text-slate-600 hover:text-slate-950 transition-colors duration-300 relative py-2 group"
+      >
+        Método
+        <span
+          class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"
+        ></span>
+      </a>
+      <a
+        href="/precios"
+        class="text-sm font-medium text-slate-600 hover:text-slate-950 transition-colors duration-300 relative py-2 group"
+      >
+        Precios
+        <span
+          class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"
+        ></span>
+      </a>
+      <a
+        href="/nosotros"
+        class="text-sm font-medium text-slate-600 hover:text-slate-950 transition-colors duration-300 relative py-2 group"
+      >
+        Nosotros
+        <span
+          class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"
+        ></span>
+      </a>
+    </nav>
+
+    <div class="flex items-center gap-4">
+      <a
+        href="/contacto"
+        class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-full text-sm font-semibold text-white bg-blue-600 border border-blue-600 hover:bg-white hover:text-blue-600 transition-all duration-300 focus:outline-none"
+      >
+        Pide tu presupuesto
+      </a>
+
+      <!-- Burger Button -->
+      <button
+        id="menu-toggle"
+        class="p-2 -mr-2 text-slate-600 hover:text-slate-900 md:hidden focus:outline-none"
+        aria-label="Abrir menú de navegación"
+        aria-expanded="false"
+      >
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          id="burger-icon"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+        <svg
+          class="w-6 h-6 hidden"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          id="close-icon"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div
+    id="mobile-menu"
+    class="fixed inset-0 top-20 bg-white md:hidden translate-x-full transition-transform duration-300 ease-in-out border-t border-slate-100"
+  >
+    <nav class="flex flex-col p-8 gap-6">
+      <a
+        href="/"
+        class="text-lg font-medium text-slate-700 hover:text-blue-600 transition-colors duration-200 mobile-nav-link"
+        >Inicio</a
+      >
+      <a
+        href="/servicios"
+        class="text-lg font-medium text-slate-700 hover:text-blue-600 transition-colors duration-200 mobile-nav-link"
+        >Servicios</a
+      >
+      <a
+        href="/portfolio"
+        class="text-lg font-medium text-slate-700 hover:text-blue-600 transition-colors duration-200 mobile-nav-link"
+        >Portafolio</a
+      >
+      <a
+        href="/metodo"
+        class="text-lg font-medium text-slate-700 hover:text-blue-600 transition-colors duration-200 mobile-nav-link"
+        >Método</a
+      >
+      <a
+        href="/precios"
+        class="text-lg font-medium text-slate-700 hover:text-blue-600 transition-colors duration-200 mobile-nav-link"
+        >Precios</a
+      >
+      <a
+        href="/nosotros"
+        class="text-lg font-medium text-slate-700 hover:text-blue-600 transition-colors duration-200 mobile-nav-link"
+        >Nosotros</a
+      >
+
+      <div class="h-px bg-slate-100 my-4"></div>
+
+      <a
+        href="/contacto"
+        class="inline-flex items-center justify-center w-full py-3.5 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 shadow-lg shadow-blue-500/10 transition-all duration-300 focus:outline-none mobile-nav-link"
+      >
+        Pide tu presupuesto
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById("main-header");
+  const menuToggle = document.getElementById("menu-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const burgerIcon = document.getElementById("burger-icon");
+  const closeIcon = document.getElementById("close-icon");
+  const mobileNavLinks = document.querySelectorAll(".mobile-nav-link");
+
+  // Change Header Style on Scroll: Solid white at top, semi-transparent blur when scrolling
+  window.addEventListener("scroll", () => {
+    const isMenuOpen = menuToggle?.getAttribute("aria-expanded") === "true";
+    if (isMenuOpen) return;
+
+    if (window.scrollY > 20) {
+      header?.classList.remove("bg-white");
+      header?.classList.add("bg-white/80", "backdrop-blur-md");
+    } else {
+      header?.classList.remove("bg-white/80", "backdrop-blur-md");
+      header?.classList.add("bg-white");
+    }
+  });
+
+  // Toggle Mobile Menu
+  function toggleMenu() {
+    const isExpanded = menuToggle?.getAttribute("aria-expanded") === "true";
+    menuToggle?.setAttribute("aria-expanded", (!isExpanded).toString());
+
+    if (isExpanded) {
+      // Close
+      mobileMenu?.classList.add("translate-x-full");
+      burgerIcon?.classList.remove("hidden");
+      closeIcon?.classList.add("hidden");
+      document.body.classList.remove("overflow-hidden");
+
+      setTimeout(() => {
+        if (menuToggle?.getAttribute("aria-expanded") === "true") return;
+        header?.classList.remove("transition-none");
+        if (window.scrollY > 20) {
+          header?.classList.remove("bg-white");
+          header?.classList.add("bg-white/80", "backdrop-blur-md");
+        } else {
+          header?.classList.remove("bg-white/80", "backdrop-blur-md");
+          header?.classList.add("bg-white");
+        }
+      }, 300);
+    } else {
+      // Open
+      mobileMenu?.classList.remove("translate-x-full");
+      burgerIcon?.classList.add("hidden");
+      closeIcon?.classList.remove("hidden");
+      document.body.classList.add("overflow-hidden");
+      header?.classList.add("bg-white", "transition-none");
+      header?.classList.remove("bg-white/80", "backdrop-blur-md");
+    }
+  }
+
+  menuToggle?.addEventListener("click", toggleMenu);
+
+  // Close Menu on Link Click
+  mobileNavLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      // Trigger close if open
+      if (menuToggle?.getAttribute("aria-expanded") === "true") {
+        toggleMenu();
+      }
+    });
+  });
+</script>
