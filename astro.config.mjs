@@ -8,7 +8,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://www.ruvedia.com',
+  site: 'https://ruvedia.com',
   adapter: cloudflare(),
 
   vite: {
