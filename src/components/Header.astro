@@ -208,6 +208,10 @@
       burgerIcon?.classList.remove("hidden");
       closeIcon?.classList.add("hidden");
       document.body.classList.remove("overflow-hidden");
+      
+      // Restablecer z-index normal al cerrar el menú
+      header?.classList.remove("z-[110]");
+      header?.classList.add("z-50");
 
       setTimeout(() => {
         if (menuToggle?.getAttribute("aria-expanded") === "true") return;
@@ -226,7 +230,10 @@
       burgerIcon?.classList.add("hidden");
       closeIcon?.classList.remove("hidden");
       document.body.classList.add("overflow-hidden");
-      header?.classList.add("bg-white", "transition-none");
+      
+      // Aumentar z-index por encima de los widgets flotantes (z-90 y z-100) al abrir el menú
+      header?.classList.remove("z-50");
+      header?.classList.add("z-[110]", "bg-white", "transition-none");
       header?.classList.remove("bg-white/80", "backdrop-blur-md");
     }
   }
